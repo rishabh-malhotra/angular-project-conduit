@@ -6,6 +6,7 @@ import { DisplayArticleComponent } from '../display-article/display-article.comp
 
 const routes: Routes = [
   { path: 'Home/Your-Feed', component: YourFeedComponent },
+  {path:'Home' ,component: YourFeedComponent},
   { path: 'Home/Global-Feed', component: GlobalFeedComponent },
   { path: 'Home/Global-Feed/articles/:slug', component: DisplayArticleComponent },
 ];

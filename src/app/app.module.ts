@@ -10,6 +10,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { HomeModule } from './home/home.module';
+import { DisplayArticleComponent } from './display-article/display-article.component';
 
 
 const appRoutes: Routes = [
@@ -18,7 +19,7 @@ const appRoutes: Routes = [
   { path: 'New-Article', component: NewArticleComponent },
   { path: 'Settings', component: SettingsComponent },
   { path: 'My-Profile', component: MyProfileComponent },
-  
+  { path: 'New-Article/articles/:slug', component: MyProfileComponent }
 ];
 @NgModule({
   declarations: [

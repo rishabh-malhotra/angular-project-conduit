@@ -1,3 +1,4 @@
+<div *ngIf="selected">
 <div>
   <h1>{{selected.article.title}}</h1>
   <img [src]="selected.article.author.image" alt="No Image" height="25px" width ="25px"/>
@@ -23,4 +24,5 @@
   <button type="submit">Post Comment</button>
 </form>
 
+</div>
 </div>
