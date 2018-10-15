@@ -13,6 +13,7 @@ export class DisplayServiceService {
     var a= this.http.get(`${this.url}articles/${slug}`);
     return a;
   }
+  
   postComment(comment,slug){
     const httpOptions = {
       headers: new HttpHeaders({
