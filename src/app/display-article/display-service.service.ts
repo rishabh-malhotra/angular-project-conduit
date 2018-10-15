@@ -8,7 +8,7 @@ import { HttpHeaders } from '@angular/common/http';
 export class DisplayServiceService {
   url: string='https://conduit.productionready.io/api/';
   user:Object;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,) { }
   getArticleDetails(slug){
     var a= this.http.get(`${this.url}articles/${slug}`);
     return a;
@@ -38,5 +38,15 @@ export class DisplayServiceService {
     };
     var deleted=this.http.delete(`${this.url}articles/${slug}/comments/${id}`,httpOptions);
     return deleted;
+  }
+  removeArticle(slug){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':'application/json',
+        'Authorization':'Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzkzNzIsInVzZXJuYW1lIjoiVmluZWUiLCJleHAiOjE1NDQ3NzM2MzF9.5Wbmpz9oPIZoc6U9s0kVgd0tp0ngiWE1LU3_4hOKflw'
+      })
+    };
+    var deletedArticle=this.http.delete(`${this.url}articles/${slug}`,httpOptions);
+    return deletedArticle;
   }
 }

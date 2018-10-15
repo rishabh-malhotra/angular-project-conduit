@@ -21,7 +21,6 @@ export class GlobalFeedComponent implements OnInit {
     
 saveArticles(articles){
   this.selected=articles;
-  console.log(this.selected);
   }
   
   getArticleDetails(data){

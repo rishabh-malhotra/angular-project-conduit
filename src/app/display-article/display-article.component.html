@@ -5,7 +5,7 @@
   <h3>{{selected.article.author.username}}</h3>
   <h3>{{selected.article.createdAt}}</h3>
   <button>Edit Article</button>
-  <button>Delete Article</button>
+  <button (click)="deleteArticle()">Delete Article</button>
 </div>
 <div>
 {{selected.article.body}}
