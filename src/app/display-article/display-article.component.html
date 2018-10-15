@@ -26,10 +26,17 @@
 </div>
 <div *ngIf="comments">
 <li *ngFor = "let comment of comments.comments">
-  <img [src]="comment.author.image" alt="No Image" height="25px" width ="25px"/>
-  <span>{{comment.author.username}}</span>
-  <span>{{comment.createdAt}}</span>
-  <button>Delete</button>
-  </li>
+  <div class="card">
+    <div class="card-block">
+    <p>{{comment.body}}</p>
+    </div>
+    <div class="card-footer">
+      <img [src]="comment.author.image" alt="No Image" height="25px" width ="25px"/>
+      <span>{{comment.author.username}}</span>&nbsp;
+      <span>{{comment.createdAt}}</span>&nbsp;
+      <button (click)="deleteComment(comment.id)">Delete</button>
+    </div> 
+  </div>
+</li>
 </div>
 </div>

@@ -13,7 +13,7 @@ export class DisplayServiceService {
     var a= this.http.get(`${this.url}articles/${slug}`);
     return a;
   }
-  
+
   postComment(comment,slug){
     const httpOptions = {
       headers: new HttpHeaders({
@@ -28,5 +28,15 @@ export class DisplayServiceService {
   getAllComments(slug){
     var comments= this.http.get(`${this.url}articles/${slug}/comments`);
     return comments;
+  }
+  removeComment(id,slug){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':'application/json',
+        'Authorization':'Token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzkzNzIsInVzZXJuYW1lIjoiVmluZWUiLCJleHAiOjE1NDQ3NzM2MzF9.5Wbmpz9oPIZoc6U9s0kVgd0tp0ngiWE1LU3_4hOKflw'
+      })
+    };
+    var deleted=this.http.delete(`${this.url}articles/${slug}/comments/${id}`,httpOptions);
+    return deleted;
   }
 }
