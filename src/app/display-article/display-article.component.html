@@ -23,6 +23,13 @@
   <input type="textarea" placeholder="Write a comment" name ="body" ngModel>
   <button type="submit">Post Comment</button>
 </form>
-
+</div>
+<div *ngIf="comments">
+<li *ngFor = "let comment of comments.comments">
+  <img [src]="comment.author.image" alt="No Image" height="25px" width ="25px"/>
+  <span>{{comment.author.username}}</span>
+  <span>{{comment.createdAt}}</span>
+  <button>Delete</button>
+  </li>
 </div>
 </div>

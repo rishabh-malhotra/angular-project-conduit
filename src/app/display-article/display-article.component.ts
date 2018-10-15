@@ -12,6 +12,7 @@ import { NgForm } from '@angular/forms';
 export class DisplayArticleComponent implements OnInit {
 public selected: object;
 slug: string;
+comments:Array<Object>;
   constructor(private router: ActivatedRoute, private getData: DisplayServiceService) { }
 
   ngOnInit() {
@@ -21,14 +22,26 @@ slug: string;
         this.saveData(status);
         });
     })
+
+    this.getData.getAllComments(this.slug).subscribe((status: Array<Object>)=>{
+      this.saveComments(status);
+      console.log(status);
+    });
     
   }
   saveData(data){
     this.selected=data;
     console.log(this.selected);
   }
+  saveComments(data){
+    this.comments=data;
+  }
   addComment(comment: NgForm){
     this.getData.postComment(comment.value,this.slug).subscribe((status: Object )=> {console.log(status)});
+    this.getData.getAllComments(this.slug).subscribe((status: Array<Object>)=>{
+      this.saveComments(status);
+      console.log(status);
+    });
   }
 
 }
