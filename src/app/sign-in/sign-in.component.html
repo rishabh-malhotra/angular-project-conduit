@@ -1,0 +1,15 @@
+<div>
+  <form #signInForm = "ngForm" (ngSubmit) = "loginUser(signInForm)" >
+    <label for= "email">username</label>
+  <input type ="text" name ="email" ngModel>
+  <label for= "password">password</label>
+  <input type ="text" name ="password" ngModel>
+  <button type="submit">Submit</button>
+    <div>
+    <span>{{selected.user.email}}</span>
+  </div>
+  <div>
+    <span>{{selected.user.token}}</span>
+  </div>
+</form>
+</div>
