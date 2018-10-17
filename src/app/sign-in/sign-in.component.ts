@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService} from './login.service';
 import { NgForm } from '@angular/forms';
+import { Router,ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-sign-in',
@@ -9,7 +10,7 @@ import { NgForm } from '@angular/forms';
 })
 export class SignInComponent implements OnInit {
   public selected: Object;
-  constructor(private getData: LoginService) { }
+  constructor(private getData: LoginService,private route:Router,private router:ActivatedRoute) { }
   loginUser(form: NgForm){
     this.getData.authUser(form.value).subscribe((status: Object )=> {
     this.displayData(status);
@@ -20,6 +21,7 @@ export class SignInComponent implements OnInit {
       //console.log(this.selected);
       localStorage.setItem('Token',data.user.token);
       localStorage.setItem('username',data.user.username);
+      this.route.navigate(['Home']);
     }
 
   ngOnInit() {

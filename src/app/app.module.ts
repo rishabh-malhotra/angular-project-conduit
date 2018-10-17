@@ -12,16 +12,24 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { HomeModule } from './home/home.module';
 import { DisplayArticleComponent } from './display-article/display-article.component';
 import { EditArticleComponent } from './edit-article/edit-article.component';
+import { ConduitComponent } from './conduit/conduit.component';
+import { YourFeedComponent } from './home/your-feed/your-feed.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { GlobalFeedComponent } from './home/global-feed/global-feed.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 const appRoutes: Routes = [
-  { path: 'Home', component: HomeComponent },
-  { path: '',   redirectTo: '/Home', pathMatch: 'full' },
+  { path: 'Home', component: YourFeedComponent },
+  { path: '',   component: ConduitComponent },
   { path: 'New-Article', component: NewArticleComponent },
   { path: 'Settings', component: SettingsComponent },
+  {path: '#',  component: ConduitComponent},
   { path: 'My-Profile', component: MyProfileComponent },
   { path: 'New-Article/articles/:slug', component: DisplayArticleComponent },
-  {path: 'Editor/:slug', component: EditArticleComponent }
+  {path: 'Editor/:slug', component: EditArticleComponent },
+  { path: 'Sign-In', component: SignInComponent },
+  {path:'Sign-Up', component:SignUpComponent},
 ];
 @NgModule({
   declarations: [
@@ -32,6 +40,13 @@ const appRoutes: Routes = [
     MyProfileComponent,
     SignInComponent,
     EditArticleComponent,
+    ConduitComponent,
+    YourFeedComponent,
+    GlobalFeedComponent,
+    DisplayArticleComponent,
+    NavbarComponent,
+    SignUpComponent,
+    
     
   ],
   imports: [

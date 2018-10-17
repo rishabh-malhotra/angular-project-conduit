@@ -1,0 +1,13 @@
+<div>
+    <form #signupForm="ngForm" (ngSubmit) = "registerUser(signupForm)">
+      <label for="username">Enter Username</label>
+      <input type="text" name="username" ngModel>
+      <label for="password">Enter New password</label>
+      <input type="password" name="password" ngModel>
+      <label for="email">Enter Email</label>
+      <input type="email" name="email"ngModel>
+      <button type="submit">Signup</button> 
+    </form>
+    <div><span>{{registeredData.user.token}}</span></div>
+    
+    </div>
