@@ -54,5 +54,8 @@ comments:Array<Object>;
   goToHome(){
   this.route.navigate(['Home']);
   }
+  editArticle(){
+    this.route.navigate(['Editor',this.slug]);
+  }
 }
 

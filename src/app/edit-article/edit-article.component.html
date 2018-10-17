@@ -1,0 +1,9 @@
+<div style="text-align:center">
+  <form #form="ngForm" (ngSubmit)="updateArticle(form)">
+  <input name="title" placeholder="Enter Title" ngModel="{{article.article.title}}"><br>
+  <input name="description" placeholder="What's this article about?" ngModel="{{article.article.description}}"/><br>
+  <textarea name="body" placeholder="Write your article(in markdown)"  ngModel="{{article.article.body}}"></textarea><br>
+  <input name="tags" placeholder="Enter tags" ngModel="{{article.article.taglist}}"/><br>
+  <button type="submit">Update Article</button>
+ </form>
+  </div> 
