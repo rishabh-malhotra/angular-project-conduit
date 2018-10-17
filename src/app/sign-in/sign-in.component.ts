@@ -17,7 +17,9 @@ export class SignInComponent implements OnInit {
     }
     displayData(data){
       this.selected = data;
-      console.log(this.selected);
+      //console.log(this.selected);
+      localStorage.setItem('Token',data.user.token);
+      localStorage.setItem('username',data.user.username);
     }
 
   ngOnInit() {

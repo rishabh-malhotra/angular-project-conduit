@@ -24,7 +24,7 @@ saveArticles(articles){
   }
   
   getArticleDetails(data){
-    this.route.navigate(['articles',data], { relativeTo: this.router});
+    this.route.navigate(['articles',data]);
 
   }
 }
