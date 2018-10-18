@@ -1,7 +1,7 @@
 <div>
   <a class="logo conduit" href="#" >Conduit</a>
   <nav class="float-right navbar">
-  <a >Home</a>&nbsp;&nbsp; 
+  <a href="#">Home</a>&nbsp;&nbsp; 
   <a (click)="callSignin()">Sign in</a>&nbsp;&nbsp;
   <a (click)="callSignup()" class="signup"> Sign up</a>  
   </nav>
@@ -10,4 +10,31 @@
   <h1 class="getfont">Conduit</h1>
   <p>A place to share your knowledge.</p>
 </div>
+
+<ul class="demo" *ngIf="selected">
+  <h2>Global Feed</h2>
+    <li *ngFor="let article of selected.articles" >
+    <div>
+    <img [src]="article.author.image" alt="No Image" height="25px" width ="25px"/><br>
+    <span>{{article.author.username}}</span><br>
+    <span>{{article.createdAt}}</span>
+  </div>
+  <div>
+    	&hearts;
+    <span>{{article.favoritesCount}}</span>
+  </div>
+  <div>
+      <span>{{article.title}}</span><br>
+      <span>{{article.description}}</span><br>
+      <ul>
+      <li *ngFor="let taglist of article.tagList">
+          <span>{{taglist}}</span>&nbsp;
+      </li>
+    </ul>
     
+      <a (click)="getArticleDetails(article.slug)">readmore</a>
+      </div>
+    </li>
+     <br><br>
+  </ul>
+  </div>

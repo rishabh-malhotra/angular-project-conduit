@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {GlobalFeedComponent} from '../home/global-feed/global-feed.component';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { ConduitService } from './conduit.service'
 @Component({
   selector: 'app-conduit',
   templateUrl: './conduit.component.html',
@@ -9,9 +9,21 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ConduitComponent implements OnInit {
 
-  constructor(private router: ActivatedRoute, private route: Router) { }
+  public selected:Array<Object>;
+
+  constructor(private router: ActivatedRoute, private route: Router,private getData: ConduitService) { }
 
   ngOnInit() {
+    this.getData.getArticles().subscribe((status: Array<Object> )=> {
+      this.saveArticles(status);
+      });
+  }
+  getArticleDetails(data){
+    this.route.navigate(['articles',data]);
+   }
+saveArticles(articles){
+  this.selected=articles;
+  console.log(this.selected);
   }
   callSignin(){
     this.route.navigate(["Sign-In"]);
