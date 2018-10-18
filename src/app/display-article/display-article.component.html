@@ -1,11 +1,28 @@
+<div *ngIf="token">
+  <app-navbar></app-navbar>
+ </div>
+ <div *ngIf="!token">
+     <a class="logo conduit" href="#" >Conduit</a>
+     <nav class="pull-right navbar">
+     <a  href="#">Home</a>&nbsp;&nbsp; 
+     <a (click)="callSignin()">Sign in</a>&nbsp;&nbsp;
+     <a (click)="callSignup()" class="signup"> Sign up</a>  
+     </nav>
+ </div>
 <div *ngIf="selected">
 <div>
   <h1>{{selected.article.title}}</h1>
   <img [src]="selected.article.author.image" alt="No Image" height="25px" width ="25px"/>
   <h3>{{selected.article.author.username}}</h3>
   <h3>{{selected.article.createdAt}}</h3>
+  <div *ngIf="match">
   <button (click)="editArticle()">Edit Article</button>
   <button (click)="deleteArticle()">Delete Article</button>
+</div>
+<div>
+  <button (click)="followUser()"> Follow {{selected.article.author.username}} </button>
+  <button (click)="favoriteArticle()">Favourite Article {{selected.article.favoritesCount}}</button>
+</div>
 </div>
 <div>
 {{selected.article.body}}
@@ -14,8 +31,14 @@
   <img [src]="selected.article.author.image" alt="No Image" height="25px" width ="25px"/>
   <h3>{{selected.article.author.username}}</h3>
   <h3>{{selected.article.createdAt}}</h3>
-  <button (click)="editArticle()">Edit Article</button>
-  <button (click)="deleteArticle()">Delete Article</button>
+  <div *ngIf="match">
+    <button (click)="editArticle()">Edit Article </button>
+    <button (click)="deleteArticle()">Delete Article</button>
+  </div>
+  <div *ngIf="!match">
+      <button (click)="followUser()"> Follow {{selected.article.author.username}} </button>
+      <button (click)="favoriteArticle()">Favourite Article {{selected.article.favoritesCount}}</button>
+    </div>
 
 </div>
 <div>
