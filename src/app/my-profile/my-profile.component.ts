@@ -14,8 +14,9 @@ export class MyProfileComponent implements OnInit {
   public articles: Array<object>;
   public username:string;
   limit: Number = 10;
-  articleCount:Number
-  itemPages:any
+  articleCount:Number;
+  itemPages:any;
+  public token: string;
 
   ngOnInit() {
     this.router.paramMap.subscribe(params => {
@@ -35,7 +36,9 @@ export class MyProfileComponent implements OnInit {
   saveUser(data,username){
     this.user=data;
     this.username=username;
-    
+    if(localStorage.getItem('Token')){
+      this.token=localStorage.getItem('Token');
+    }
     }
     saveArticles(data){
       this.articles=data;
@@ -61,7 +64,12 @@ export class MyProfileComponent implements OnInit {
   getArticleDetails(data){
     this.route.navigate(['articles',data]);
   }
-  
+  callSignin(){
+    this.route.navigate(["Sign-In"]);
+  }
+  callSignup(){
+    this.route.navigate(["Sign-Up"]);
+  }
   clickonList(e){
     let offset = e * +this.limit;
     this.getData.makeFeedsRequestonPages(offset).subscribe((data) => {

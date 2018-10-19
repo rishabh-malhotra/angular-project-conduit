@@ -13,7 +13,7 @@ export class MyProfileService {
         'Authorization':'Token '+localStorage.getItem('Token')
       })
     };
-    return this.http.get(`${this.url}profiles/${username}`,httpOptions);
+    return this.http.get(`${this.url}profiles/${username}`);
   }
   getMyArticles(username){
     const httpOptions = {
@@ -22,7 +22,7 @@ export class MyProfileService {
         'Authorization':'Token '+localStorage.getItem('Token')
       })
     };
-    return this.http.get(`${this.url}articles?author=${username}`,httpOptions);
+    return this.http.get(`${this.url}articles?author=${username}`);
   }
   getFavoriteArticles(username){
     const httpOptions = {
@@ -31,7 +31,7 @@ export class MyProfileService {
         'Authorization':'Token '+localStorage.getItem('Token')
       })
     };
-    return this.http.get(`${this.url}articles?favorited=${username}`,httpOptions);
+    return this.http.get(`${this.url}articles?favorited=${username}`);
   }
   makeFeedsRequestonPages(offset){
     return this.http.get(`${this.url}articles?limit=10&offset=${offset}`)
