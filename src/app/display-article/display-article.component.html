@@ -41,11 +41,18 @@
     </div>
 
 </div>
-<div>
+<div *ngIf="token">
 <form #comment = "ngForm" (ngSubmit) = "addComment(comment)">
   <input type="textarea" placeholder="Write a comment" name ="body" ngModel>
   <button type="submit">Post Comment</button>
 </form>
+</div>
+<div *ngIf="!token">
+  <p>
+
+  <a (click) = "callSignin()">Sign In</a> or <a (click) = "callSignup()">sign In</a> to add comments
+  to this article.
+</p>
 </div>
 <div *ngIf="comments">
 <li *ngFor = "let comment of comments.comments">

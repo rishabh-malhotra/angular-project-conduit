@@ -16,4 +16,7 @@ export class YourFeedService {
    var a= this.http.get(`${this.url}articles/feed`,httpOptions);
    return a;
   }
+  makeFeedsRequestonPages(offset){
+    return this.http.get(`${this.url}articles?limit=10&offset=${offset}`)
+   }
 }

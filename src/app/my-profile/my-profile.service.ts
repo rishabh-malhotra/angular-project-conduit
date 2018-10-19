@@ -33,4 +33,7 @@ export class MyProfileService {
     };
     return this.http.get(`${this.url}articles?favorited=${localStorage.getItem('username')}`,httpOptions);
   }
+  makeFeedsRequestonPages(offset){
+    return this.http.get(`${this.url}articles?limit=10&offset=${offset}`)
+   }
 }

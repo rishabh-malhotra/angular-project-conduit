@@ -32,3 +32,6 @@
        <br><br>
     </ul>
   </div> 
+<div *ngIf="articleCount">
+    <app-list [articleCount] = itemPages (listNumberclick)=clickonList($event)></app-list>
+</div>    

@@ -29,12 +29,14 @@
          <span>{{taglist}}</span>&nbsp;
      </li>
    </ul>
-    <!-- <a [routerLink]="['/', article.slug]">
-     <span>Read More</span> </a> -->
+ 
      <a (click)="getArticleDetails(article.slug)">readmore</a>
      </div>
    </li>
     <br><br>
  </ul>
 </div>
+</div>
+<div *ngIf="articleCount">
+  <app-list [articleCount] = itemPages (listNumberclick)=clickonList($event)></app-list>
 </div>
