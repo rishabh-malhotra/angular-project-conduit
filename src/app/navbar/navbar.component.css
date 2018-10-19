@@ -28,3 +28,9 @@
     color: #5cb85c;
     text-decoration: none;
 }
+.user-pic {
+    height: 26px;
+    border-radius: 50px;
+    opacity: 3!important;
+    margin-right: 5px;
+}

@@ -16,8 +16,6 @@ constructor(private http: HttpClient) { }
  
   
   authUser(user){
-   
-    console.log(JSON.stringify({user}));
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':'application/json'

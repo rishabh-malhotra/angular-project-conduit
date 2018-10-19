@@ -21,6 +21,7 @@ export class SignInComponent implements OnInit {
       //console.log(this.selected);
       localStorage.setItem('Token',data.user.token);
       localStorage.setItem('username',data.user.username);
+      localStorage.setItem('userimage',data.user.image);
       this.route.navigate(['Home']);
     }
 

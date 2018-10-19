@@ -10,7 +10,9 @@ export class NavbarComponent implements OnInit {
 
   constructor(private route: Router, private router: ActivatedRoute) { }
   public username: string;
+  public userimage:string;
   ngOnInit() {
+    this.userimage=localStorage.getItem('userimage');
     this.username=localStorage.getItem('username');
   }
   callProfile(){
