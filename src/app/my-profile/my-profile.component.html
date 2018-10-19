@@ -8,24 +8,24 @@
     </nav>
 </div>
 <div class ="profile-page" *ngIf="user">
-    <div class="user-info"> <img [src]="user.profile.image" alt="No Image" height="25px" width ="25px"/><br>
+    <div class="user-info"> <img [src]="user.profile.image" alt="No Image" height="25px" width ="25px"/>
      <h4>{{user.profile.username}}</h4>
      <p>{{user.profile.bio}}</p>
      <button class="btn btn-sm btn-outline-secondary action-btn" (click)="callSettings()"><i class="fas fa-cog"></i>Edit Profile Settings</button>
  </div>
  <div class="container">
-    <div class ="nav">
-      <nav>
- <button (click)="callMyArticles()">My Articles</button>
- <button (click)="callFavoriteArticles()">Favorite Articles</button>
-</nav>  
-</div>
+  <div class ="nav">
+    <nav>
+      <a (click)="callMyArticles()">My Articles</a>&nbsp;&nbsp;&nbsp;
+      <a (click)="callFavoriteArticles()">Favorite Articles</a>
+    </nav>  
+  </div>
 <div *ngIf="articles">
 <ul class="demo">
    <li *ngFor="let article of articles.articles" >
    <div>
-   <img [src]="article.author.image" alt="No Image" height="25px" width ="25px"/><br>
-   <a (click)="callProfile(article.author.username)"><span>{{article.author.username}}</span></a><br>
+   <img [src]="article.author.image" alt="No Image" height="25px" width ="25px"/>
+   <a (click)="callProfile(article.author.username)"><span>{{article.author.username}}</span></a>
    <span>{{article.createdAt}}</span>
  </div>
  <div>
@@ -44,7 +44,6 @@
      <a (click)="getArticleDetails(article.slug)">readmore</a>
      </div>
    </li>
-    <br><br>
  </ul>
 </div>
 </div>
