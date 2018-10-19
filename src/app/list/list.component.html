@@ -1,15 +1,9 @@
 <nav>
   <ul class="pagination">
-    <div class="row">
-      <div *ngFor="let value of articleCount">
-        <div class="card">
-          <div class="card-body">
-            <a style="cursor:pointer" (click)=listValue(value)>
-              <h5 class="card-title">{{value}}</h5>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <li class="page-item" *ngFor="let value of articleCount">          
+      <a style="cursor:pointer" (click)=listValue(value)>
+        <h5 class="page-link">{{value}}</h5>
+      </a>      
+    </li>
   </ul>
 </nav>

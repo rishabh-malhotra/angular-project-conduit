@@ -12,6 +12,7 @@ export class SettingsComponent implements OnInit {
 
   constructor(private getData: SettingsService, private route: Router,private router: ActivatedRoute) { }
   public user: Object;
+  public username: string;
   ngOnInit() {
     this.getData.getProfile().subscribe((status)=>{
       this.saveUser(status);
@@ -22,8 +23,8 @@ export class SettingsComponent implements OnInit {
   this.user=data;
   }
   updateSettings(form: NgForm){
-    this.getData.updateProfile(form.value).subscribe((status)=>{this.route.navigate(["My-Profile"]);});
-    
+    this.username=localStorage.getItem('username');
+    this.getData.updateProfile(form.value).subscribe((status)=>{this.route.navigate(["My-Profile",this.username]);});
    }
    
   logout(){

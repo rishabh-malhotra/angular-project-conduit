@@ -1,9 +1,22 @@
-<div style="text-align:center">
-  <form #form="ngForm" (ngSubmit)="updateArticle(form)">
-  <input name="title" placeholder="Enter Title" ngModel="{{article.article.title}}"><br>
-  <input name="description" placeholder="What's this article about?" ngModel="{{article.article.description}}"/><br>
-  <textarea name="body" placeholder="Write your article(in markdown)"  ngModel="{{article.article.body}}"></textarea><br>
-  <input name="tags" placeholder="Enter tags" ngModel="{{article.article.taglist}}"/><br>
-  <button type="submit">Update Article</button>
- </form>
-  </div> 
+<div class="container">
+    <app-navbar></app-navbar>
+    <div class="row">
+        <div class="col-md-10 offset-md-1 col-xs-12">
+          <form #form="ngForm" (ngSubmit)="updateArticle(form)">
+        <fieldset class="form-group">
+        <input class="form-control form-control-lg " name="title" placeholder="Article Title" ngModel="{{article.article.title}}"/>
+    </fieldset>
+    <fieldset class="form-group">
+    <input class="form-control form-control-lg " name="description" placeholder="What's this article about?"ngModel="{{article.article.description}}"/>
+    </fieldset>
+     <fieldset class="form-group">
+        <textarea class="form-control form-control-lg " name="body" placeholder="Write your article(in markdown)"  rows=8 ngModel="{{article.article.body}}"></textarea>
+    </fieldset>
+    <fieldset class="form-group">
+        <input class="form-control form-control-lg " name="tag" type="text" placeholder="Enter tags"ngModel="{{article.article.taglist}}"/>
+    </fieldset>
+        <button class="btn btn-success float-right" type="submit" >Update Article</button>
+       </form>
+        </div> 
+    </div>
+    </div> 

@@ -5,8 +5,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class SettingsService {
   url: string='https://conduit.productionready.io/api/';
+  username: string;
   constructor(private http: HttpClient) { }
   getProfile(){
+    this.username=localStorage.getItem('username');
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':'application/json',

@@ -1,17 +1,29 @@
 <div>
-  <a class="logo conduit" href="#" >Conduit</a>
-  <nav class="pull-right navbar">
-  <a  href="#">Home</a>&nbsp;&nbsp; 
-  <a (click)="callSignin()">Sign in</a>&nbsp;&nbsp;
-  <a (click)="callSignup()" class="signup"> Sign up</a>  
-  </nav>
-</div>
+  <div class="row">
+    <div class="col-md-12">          
+      <nav class="navbar">
+        <a class="logo conduit" href="#" >Conduit</a>
+        <div class="navr">
+          <a href="#">Home</a>&nbsp;&nbsp; 
+          <a (click)="callSignin()">Sign in</a>&nbsp;&nbsp;
+          <a (click)="callSignup()" class="signup float-right"> Sign up</a>  
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>  
 <div>
   <form #signInForm = "ngForm" (ngSubmit) = "loginUser(signInForm)" >
-    <label for= "email">username</label>
-  <input type ="text" name ="email" ngModel>
-  <label for= "password">password</label>
-  <input type ="text" name ="password" ngModel>
-  <button type="submit">Submit</button>
-</form>
+    <div class="col-md-6 offset-md-3 col-xs-12">
+      <h1 class="text-xs-center signin">Sign In</h1>
+      <a id="signup" class="form-control-lg" (click)="callSignup()">Need an account?</a>
+      <fieldset class="form-group">
+        <input type ="text" class="form-control form-control-lg" placeholder="Email" name ="email" ngModel>
+      </fieldset>
+      <fieldset class="form-group">
+        <input type ="password" class="form-control form-control-lg" name ="password" placeholder="Password" ngModel>
+      </fieldset>
+      <button type="submit" class="btn btn-lg btn-success float-right ">Sign in</button>
+    </div>
+  </form>
 </div>

@@ -1,42 +1,56 @@
-<div>
-  <a class="logo conduit" href="#" >Conduit</a>
-  <nav class="float-right navbar">
-  <a href="#">Home</a>&nbsp;&nbsp; 
-  <a (click)="callSignin()">Sign in</a>&nbsp;&nbsp;
-  <a (click)="callSignup()" class="signup"> Sign up</a>  
+<div class="main">
+  <div class="row">
+    <div class="col-md-12">
+  
+  <nav class="navbar">
+    <a class="logo conduit" href="#" >Conduit</a>
+    <div class="navr">
+    <a href="#">Home</a>&nbsp;&nbsp; 
+    <a (click)="callSignin()">Sign in</a>&nbsp;&nbsp;
+    <a (click)="callSignup()" class="signup"> Sign up</a>    
+    </div>
   </nav>
 </div>
+</div>
+<div class="col-md-12">
 <div class="logo-banner">
   <h1 class="getfont">Conduit</h1>
   <p>A place to share your knowledge.</p>
 </div>
-
+</div>
+<div class="row">
+<div class="col-md-9">
 <ul class="demo" *ngIf="selected">
-  <h2>Global Feed</h2>
-    <li *ngFor="let article of selected.articles" >
-    <div>
-    <img [src]="article.author.image" alt="No Image" height="25px" width ="25px"/><br>
-    <a (click)="callProfile(article.author.username)"><span>{{article.author.username}}</span></a><br>
-    <span>{{article.createdAt}}</span>
+  <h4>Global Feed</h4>
+    <li class="article-preview" *ngFor="let article of selected.articles" >
+    <div class="article-meta">
+    <img [src]="article.author.image" alt="No Image" height="25px" width ="25px"/>
+    <div class="info">
+    <a class="author" (click)="callProfile(article.author.username)"><span>{{article.author.username}}</span></a><br>
+    <span class="date">{{article.createdAt}}</span>
+  </div>
+  <button class="btn btn-sm btn-outline-primary float-right">
+    
+    <span>	&hearts;{{article.favoritesCount}}</span>
+  </button>
   </div>
   <div>
-    	&hearts;
-    <span>{{article.favoritesCount}}</span>
-  </div>
-  <div>
-      <span>{{article.title}}</span><br>
-      <span>{{article.description}}</span><br>
+      <h3>{{article.title}}</h3>
+      <p style="margin-top:0px">{{article.description}}</p>
       <ul>
       <li *ngFor="let taglist of article.tagList">
           <span>{{taglist}}</span>&nbsp;
       </li>
     </ul>
     
-      <a (click)="getArticleDetails(article.slug)">readmore</a>
+      <a class="readmore" (click)="getArticleDetails(article.slug)">Read more...</a>
       </div>
     </li>
      <br><br>
   </ul>
+  </div>
+</div>
   <div *ngIf="articleCount">
     <app-list [articleCount] = itemPages (listNumberclick)=clickonList($event)></app-list>
   </div>
+</div>

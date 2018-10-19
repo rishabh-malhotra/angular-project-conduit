@@ -7,15 +7,18 @@
     <a (click)="callSignup()" class="signup"> Sign up</a>  
     </nav>
 </div>
-<div *ngIf="user">
-  <div> <img [src]="user.user.image" alt="No Image" height="25px" width ="25px"/><br>
-      <span>{{user.profile.username}}</span><br>
-      <span>{{user.profile.bio}}</span><br>
-   <button (click)="callSettings()">Edit Profile Settings</button>
+<div class ="profile-page" *ngIf="user">
+    <div class="user-info"> <img [src]="user.profile.image" alt="No Image" height="25px" width ="25px"/><br>
+     <h4>{{user.profile.username}}</h4>
+     <p>{{user.profile.bio}}</p>
+     <button class="btn btn-sm btn-outline-secondary action-btn" (click)="callSettings()"><i class="fas fa-cog"></i>Edit Profile Settings</button>
  </div>
-<div>
+ <div class="container">
+    <div class ="nav">
+      <nav>
  <button (click)="callMyArticles()">My Articles</button>
  <button (click)="callFavoriteArticles()">Favorite Articles</button>
+</nav>  
 </div>
 <div *ngIf="articles">
 <ul class="demo">
@@ -47,4 +50,5 @@
 </div>
 <div *ngIf="articleCount">
   <app-list [articleCount] = itemPages (listNumberclick)=clickonList($event)></app-list>
+</div>
 </div>

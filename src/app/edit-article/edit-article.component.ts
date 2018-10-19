@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
 })
 export class EditArticleComponent implements OnInit {
   public slug:string;
-  public article:Object;
+  public article:object;
 
   constructor(private route:Router,private router:ActivatedRoute,private getData:EditService) { }
 

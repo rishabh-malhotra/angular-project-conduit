@@ -1,14 +1,27 @@
-<app-navbar></app-navbar>
-<div *ngIf="user">
-  <h1>Your Settings</h1>
-  <form #updateSettingsForm = "ngForm" (ngSubmit) = "updateSettings(updateSettingsForm)"> 
-  <input type="text" placeholder="URL of Image" name="image" ngModel="{{user.user.image}}"><br>
-  <input type="text" placeholder="Username" name="username" ngModel="{{user.user.username}}"><br>
-  <input type="text" placeholder="Short bio about you" name="bio" ngModel="{{user.user.bio}}"> <br>
-  <input type="text" placeholder="Email" name="email" ngModel="{{user.user.email}}"><br>
-  <input type="password" placeholder="New Password" name="password" ngModel><br>
-  <button type="submit">Update Settings</button>
-  
- </form>
-<button (click)="logout()">Log out</button>
-</div> 
+<div class="container">
+  <app-navbar></app-navbar>
+  <div class="row" *ngIf="user">
+    <div class="col-md-6 offset-md-3 col-xs-12">
+      <form #updateSettingsForm = "ngForm" (ngSubmit) = "updateSettings(updateSettingsForm)"> 
+        <h1 class="text-xs-center">Your Settings</h1>
+        <fieldset class="form-group">
+          <input class="form-control form-control-lg " type="text" placeholder="URL of Image" name="image" ngModel="{{user.user.image}}">
+        </fieldset>
+        <fieldset class="form-group">
+          <input class="form-control form-control-lg " type="text" placeholder="Username" name="username" ngModel="{{user.user.username}}">
+        </fieldset>
+        <fieldset class="form-group">
+          <input class="form-control form-control-lg " type="text" placeholder="Short bio about you" name="bio" ngModel="{{user.user.bio}}">
+        </fieldset> 
+        <fieldset class="form-group">
+          <input class="form-control form-control-lg " type="text" placeholder="Email" name="email" ngModel="{{user.user.email}}">
+        </fieldset> 
+        <fieldset class="form-group">
+          <input class="form-control form-control-lg " type="password" placeholder="New Password" name="password" ngModel>
+        </fieldset>
+        <button class="btn btn-success"type="submit">Update Settings</button>
+      </form>
+      <hr>
+    <button class="btn btn-danger float-right" (click)="logout()">Log out</button>
+  </div> 
+</div>
