@@ -11,7 +11,7 @@
       <li *ngFor="let article of selected.articles" >
       <div>
       <img [src]="article.author.image" alt="No Image" height="25px" width ="25px"/><br>
-      <span>{{article.author.username}}</span><br>
+      <a (click)="callProfile(article.author.username)"> <span>{{article.author.username}}</span></a><br>
       <span>{{article.createdAt}}</span>
     </div>
     <div>

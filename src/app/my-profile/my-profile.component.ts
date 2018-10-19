@@ -12,19 +12,30 @@ export class MyProfileComponent implements OnInit {
   constructor(private getData: MyProfileService, private route: Router,private router: ActivatedRoute) { }
   public user: Object;
   public articles: Array<object>;
+  public username:string;
   limit: Number = 10;
   articleCount:Number
   itemPages:any
 
   ngOnInit() {
-    this.getData.getProfile().subscribe((status)=>{
-      this.saveUser(status);
-      this.callMyArticles();
+    this.router.paramMap.subscribe(params => {
+      this.username = params.get("username");
+      this.getData.getProfile(this.username).subscribe((status)=>{
+        this.saveUser(status,this.username);
+        this.callMyArticles();
+       })
      
     })
   }
-  saveUser(data){
+  callProfile(username){
+    console.log(username);
+    this.route.navigate(["My-Profile",username])
+  
+  }
+  saveUser(data,username){
     this.user=data;
+    this.username=username;
+    
     }
     saveArticles(data){
       this.articles=data;
@@ -38,12 +49,12 @@ export class MyProfileComponent implements OnInit {
       this.route.navigate(["Settings"]);
     }
   callMyArticles(){
-    this.getData.getMyArticles().subscribe((status)=>{console.log(status);
+    this.getData.getMyArticles(this.username).subscribe((status)=>{console.log(status);
     this.saveArticles(status);
     });
   }
   callFavoriteArticles(){
-    this.getData.getFavoriteArticles().subscribe((status)=>{console.log(status);
+    this.getData.getFavoriteArticles(this.username).subscribe((status)=>{console.log(status);
       this.saveArticles(status)
     });
   }

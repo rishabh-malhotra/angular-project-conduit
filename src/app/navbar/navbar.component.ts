@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: Router, private router: ActivatedRoute) { }
 
   ngOnInit() {
   }
-
+  callProfile(){
+    this.route.navigate(["My-Profile",localStorage.getItem('username')]);
+  }
 }

@@ -6,32 +6,32 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 export class MyProfileService {
   url: string='https://conduit.productionready.io/api/';
   constructor(private http: HttpClient) { }
-  getProfile(){
+  getProfile(username){
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':'application/json',
         'Authorization':'Token '+localStorage.getItem('Token')
       })
     };
-   return this.http.get(`${this.url}user`,httpOptions);
+    return this.http.get(`${this.url}profiles/${username}`,httpOptions);
   }
-  getMyArticles(){
+  getMyArticles(username){
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':'application/json',
         'Authorization':'Token '+localStorage.getItem('Token')
       })
     };
-    return this.http.get(`${this.url}articles?author=${localStorage.getItem('username')}`,httpOptions);
+    return this.http.get(`${this.url}articles?author=${username}`,httpOptions);
   }
-  getFavoriteArticles(){
+  getFavoriteArticles(username){
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':'application/json',
         'Authorization':'Token '+localStorage.getItem('Token')
       })
     };
-    return this.http.get(`${this.url}articles?favorited=${localStorage.getItem('username')}`,httpOptions);
+    return this.http.get(`${this.url}articles?favorited=${username}`,httpOptions);
   }
   makeFeedsRequestonPages(offset){
     return this.http.get(`${this.url}articles?limit=10&offset=${offset}`)

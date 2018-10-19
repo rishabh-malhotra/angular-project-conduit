@@ -44,4 +44,8 @@ saveArticles(articles){
        
     });
   }
+  callProfile(username){
+    console.log(username);
+    this.route.navigate(["My-Profile",username])
+   }
 }

@@ -40,4 +40,8 @@ export class YourFeedComponent implements OnInit {
          
       });
     }
+    callProfile(username){
+      console.log(username);
+      this.route.navigate(["My-Profile",username])
+    }
 }

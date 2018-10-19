@@ -82,5 +82,10 @@ public match:boolean;
   favoriteArticle(){
     this.getData.favorite(this.slug).subscribe((status)=>{console.log(status)})
   }
+  callProfile(username){
+    console.log(username);
+    this.route.navigate(["My-Profile",username])
+  
+  }
 }
 

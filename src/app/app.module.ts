@@ -31,6 +31,7 @@ const appRoutes: Routes = [
   {path: 'Editor/:slug', component: EditArticleComponent },
   { path: 'Sign-In', component: SignInComponent },
   {path:'Sign-Up', component:SignUpComponent},
+  { path: 'My-Profile/:username', component: MyProfileComponent },
 ];
 @NgModule({
   declarations: [
