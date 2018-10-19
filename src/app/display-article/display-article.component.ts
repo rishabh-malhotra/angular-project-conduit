@@ -76,5 +76,11 @@ public match:boolean;
   editArticle(){
     this.route.navigate(['Editor',this.slug]);
   }
+  followUser(){
+    this.getData.follow(this.selected).subscribe((status)=>{console.log(status)})
+  }
+  favoriteArticle(){
+    this.getData.favorite(this.slug).subscribe((status)=>{console.log(status)})
+  }
 }
 

@@ -49,4 +49,24 @@ export class DisplayServiceService {
     var deletedArticle=this.http.delete(`${this.url}articles/${slug}`,httpOptions);
     return deletedArticle;
   }
+  follow(user){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization':'Token '+localStorage.getItem('Token')
+      })
+    };
+  
+    var a= this.http.post(`${this.url}profiles/${user.article.author.username}/follow`,httpOptions);
+    return a;  
+  }
+  favorite(slug){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization':'Token '+localStorage.getItem('Token')
+      })
+    };
+  
+    var a= this.http.post(`${this.url}articles/${slug}/favorite`,httpOptions);
+    return a;  
+   }
 }
