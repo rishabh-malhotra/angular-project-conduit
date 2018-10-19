@@ -1,5 +1,13 @@
 <div>
-    <form #signupForm="ngForm" (ngSubmit) = "registerUser(signupForm)">
+  <a class="logo conduit" href="#" >Conduit</a>
+  <nav class="pull-right navbar">
+  <a  href="#">Home</a>&nbsp;&nbsp; 
+  <a (click)="callSignin()">Sign in</a>&nbsp;&nbsp;
+  <a (click)="callSignup()" class="signup"> Sign up</a>  
+  </nav>
+</div>
+<div>
+  <form #signupForm="ngForm" (ngSubmit) = "registerUser(signupForm)">
       <label for="username">Enter Username</label>
       <input type="text" name="username" ngModel>
       <label for="password">Enter New password</label>

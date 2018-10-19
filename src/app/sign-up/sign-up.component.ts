@@ -24,4 +24,10 @@ export class SignUpComponent implements OnInit {
       localStorage.setItem('username',data.user.username);
       this.route.navigate(['Home']);
   }
+  callSignin(){
+    this.route.navigate(["Sign-In"]);
+  }
+  callSignup(){
+    this.route.navigate(["Sign-Up"]);
+  }
 }

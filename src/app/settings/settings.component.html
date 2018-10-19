@@ -1,4 +1,14 @@
 <app-navbar></app-navbar>
-<p>
-  settings works!
-</p>
+<div *ngIf="user">
+  <h1>Your Settings</h1>
+  <form #updateSettingsForm = "ngForm" (ngSubmit) = "updateSettings(updateSettingsForm)"> 
+  <input type="text" placeholder="URL of Image" name="image" ngModel="{{user.user.image}}"><br>
+  <input type="text" placeholder="Username" name="username" ngModel="{{user.user.username}}"><br>
+  <input type="text" placeholder="Short bio about you" name="bio" ngModel="{{user.user.bio}}"> <br>
+  <input type="text" placeholder="Email" name="email" ngModel="{{user.user.email}}"><br>
+  <input type="password" placeholder="New Password" name="password" ngModel><br>
+  <button type="submit">Update Settings</button>
+  
+ </form>
+<button (click)="logout()">Log out</button>
+</div> 

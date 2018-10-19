@@ -1,4 +1,12 @@
 <div>
+  <a class="logo conduit" href="#" >Conduit</a>
+  <nav class="pull-right navbar">
+  <a  href="#">Home</a>&nbsp;&nbsp; 
+  <a (click)="callSignin()">Sign in</a>&nbsp;&nbsp;
+  <a (click)="callSignup()" class="signup"> Sign up</a>  
+  </nav>
+</div>
+<div>
   <form #signInForm = "ngForm" (ngSubmit) = "loginUser(signInForm)" >
     <label for= "email">username</label>
   <input type ="text" name ="email" ngModel>

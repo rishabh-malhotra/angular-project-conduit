@@ -1,4 +1,40 @@
 <app-navbar></app-navbar>
-<p>
-  my-profile works!
-</p>
+<div *ngIf="user">
+  <div> <img [src]="user.user.image" alt="No Image" height="25px" width ="25px"/><br>
+   <span>{{user.user.username}}</span><br>
+   <span>{{user.user.bio}}</span><br>
+   <button (click)="callSettings()">Edit Profile Settings</button>
+ </div>
+<div>
+ <button (click)="callMyArticles()">My Articles</button>
+ <button (click)="callFavoriteArticles()">Favorite Articles</button>
+</div>
+<div *ngIf="articles">
+<ul class="demo" >
+   <li *ngFor="let article of articles.articles" >
+   <div>
+   <img [src]="article.author.image" alt="No Image" height="25px" width ="25px"/><br>
+   <span>{{article.author.username}}</span><br>
+   <span>{{article.createdAt}}</span>
+ </div>
+ <div>
+     &hearts;
+   <span>{{article.favoritesCount}}</span>
+ </div>
+ <div>
+     <span>{{article.title}}</span><br>
+     <span>{{article.description}}</span><br>
+     <ul>
+     <li *ngFor="let taglist of article.tagList">
+         <span>{{taglist}}</span>&nbsp;
+     </li>
+   </ul>
+    <!-- <a [routerLink]="['/', article.slug]">
+     <span>Read More</span> </a> -->
+     <a (click)="getArticleDetails(article.slug)">readmore</a>
+     </div>
+   </li>
+    <br><br>
+ </ul>
+</div>
+</div>
