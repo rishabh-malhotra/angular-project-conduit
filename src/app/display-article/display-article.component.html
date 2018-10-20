@@ -1,72 +1,119 @@
 <div *ngIf="token">
   <app-navbar></app-navbar>
- </div>
- <div *ngIf="!token">
-     <a class="logo conduit" href="#" >Conduit</a>
-     <nav class="pull-right navbar">
-     <a  href="#">Home</a>&nbsp;&nbsp; 
-     <a (click)="callSignin()">Sign in</a>&nbsp;&nbsp;
-     <a (click)="callSignup()" class="signup"> Sign up</a>  
-     </nav>
- </div>
-<div *ngIf="selected">
-<div>
-  <h1>{{selected.article.title}}</h1>
-  <img [src]="selected.article.author.image" alt="No Image" height="25px" width ="25px"/>
-  <a (click)="callProfile(selected.article.author.username)"><h3>{{selected.article.author.username}}</h3></a>
-  <h3>{{selected.article.createdAt}}</h3>
-  <div *ngIf="match">
-  <button (click)="editArticle()">Edit Article</button>
-  <button (click)="deleteArticle()">Delete Article</button>
-</div>
-<div *ngIf=!match>
-  <button (click)="followUser()"> Follow {{selected.article.author.username}} </button>
-  <button (click)="favoriteArticle()">Favourite Article {{selected.article.favoritesCount}}</button>
-</div>
-</div>
-<div>
-{{selected.article.body}}
-</div>
-<div>
-  <img [src]="selected.article.author.image" alt="No Image" height="25px" width ="25px"/>
-  <a (click)="callProfile(selected.article.author.username)"><h3>{{selected.article.author.username}}</h3></a>
-  <h3>{{selected.article.createdAt}}</h3>
-  <div *ngIf="match">
-    <button (click)="editArticle()">Edit Article </button>
-    <button (click)="deleteArticle()">Delete Article</button>
-  </div>
-  <div *ngIf="!match">
-      <button (click)="followUser()"> Follow {{selected.article.author.username}} </button>
-      <button (click)="favoriteArticle()">Favourite Article {{selected.article.favoritesCount}}</button>
-    </div>
-
-</div>
-<div *ngIf="token">
-<form #comment = "ngForm" (ngSubmit) = "addComment(comment)">
-  <input type="textarea" placeholder="Write a comment" name ="body" ngModel>
-  <button type="submit">Post Comment</button>
-</form>
 </div>
 <div *ngIf="!token">
-  <p>
-
-  <a (click) = "callSignin()">Sign In</a> or <a (click) = "callSignup()">sign In</a> to add comments
-  to this article.
-</p>
+  <div class="row">
+      <div class="col-md-12">
+        
+        <nav class="navbar">
+        <a class="logo conduit" href="#" >Conduit</a>
+        <div class="navr">
+        <a href="#">Home</a>&nbsp;&nbsp; 
+        <a (click)="callSignin()">Sign in</a>&nbsp;&nbsp;
+        <a (click)="callSignup()" class="signup float-right"> Sign up</a>  
+      </div>
+      </nav>
+      </div>
+      </div>
 </div>
-<div *ngIf="comments">
-<li *ngFor = "let comment of comments.comments">
-  <div class="card">
-    <div class="card-block">
-    <p>{{comment.body}}</p>
+<div *ngIf="selected">
+<div class="banner" >
+<div class="container">
+<div class="title">
+<h1>{{selected.article.title}}</h1>
+</div>
+<div class="article-meta">
+    <img [src]="selected.article.author.image" alt="No Image" height="25px" width ="25px"/>
+    <div class="info">
+    <a class="author" (click)="callProfile(selected.article.author.username)">{{selected.article.author.username}}</a>
+    <span class="date">{{selected.article.createdAt}}</span>
     </div>
-    <div class="card-footer">
-      <img [src]="comment.author.image" alt="No Image" height="25px" width ="25px"/>
-      <a (click)="callProfile(comment.author.username)"><span>{{comment.author.username}}</span></a>&nbsp;
-      <span>{{comment.createdAt}}</span>&nbsp;
-      <button (click)="deleteComment(comment.id)">Delete</button>
-    </div> 
+  </div>
+</div>
+<br>  
+  <div *ngIf="match">
+    <button class="btn btn-outline btn-sm " (click)="editArticle()"><i class="fas fa-pen"></i>Edit Article </button>
+      &nbsp;&nbsp;
+      <button class="btn btn-outline-danger btn-sm " (click)="deleteArticle()"><i class="fas fa-trash-alt"></i>Delete Article</button>
+  </div>
+  <div *ngIf="!match">
+    <button class="btn btn-outline btn-sm float-right" (click) = "followUser()"><i class="far fa-star"></i> Follow {{selected.article.author.username}} </button>
+    &nbsp;&nbsp;
+     <button class="btn btn-outline-danger btn-sm float-right" (click)="favoriteArticle()"><i class="far fa-heart"></i>Favourite Article {{selected.article.favoritesCount}}</button>
+    </div>
+
+  </div>
+  <div class="container page">
+  <p> {{selected.article.body}}</p>
+   <hr>
+  <div class="article-actions">
+       <div class="article-meta ">
+          <img [src]="selected.article.author.image" alt="No Image" height="25px" width ="25px"/>
+          <div class="info">
+          <a class="author" (click)="callProfile(selected.article.author.username)" style="color:#5cb85c">{{selected.article.author.username}}</a>
+          <span class="date">{{selected.article.createdAt}}</span>
+          <br>
+      </div>
+      <div *ngIf="match">
+              <button class="btn btn-outline btn-sm " (click)="editArticle()"><i class="fas fa-pen"></i>Edit Article </button>
+              &nbsp;&nbsp;
+              <button class="btn btn-outline-danger btn-sm " (click)="deleteArticle()"><i class="fas fa-trash-alt"></i>Delete Article</button>
+      </div>
+      <div *ngIf="!match">
+                <button class="btn btn-outline btn-sm float-right" (click) = "followUser()"><i class="far fa-star"></i> Follow {{selected.article.author.username}} </button>
+                &nbsp;&nbsp; 
+                <button class="btn btn-outline-danger btn-sm float-right" (click)="favoriteArticle()"><i class="far fa-heart"></i>Favourite Article {{selected.article.favoritesCount}}</button>
+      </div>
+    </div>
+        
+  </div>
+  <br><br>
+  <div class="row">
+    <div class="col-md-3"></div>
+    
+  <div class="col-md-6" *ngIf="token">
+  <form #comment = "ngForm" (ngSubmit) = "addComment(comment)">
+    <div class="card">
+      <div class="card-block">
+    <textarea class="form-control" placeholder="Write a comment.." name ="body" rows=4 cols=70 ngModel></textarea>
+    </div>
+  <div class="card-footer cimage">
+    <img class="float-left img-circle" [src]="selected.article.author.image" alt="No Image" height="25px" width ="25px"/>
+    <button type="submit" class=" btn btn-sm btn-success float-right">Post Comment</button>
+  </div>
+  </div>
+  </form>
+  </div>
+  <div class="col-md-6" *ngIf="!token">
+      <p>
+        <a (click)="callSignin()">Sign In </a> or <a (click)="callSignup()">Sign Up </a>
+        to add comment to this article.
+      </p>
+  </div>
+  <div class="col-md-3"></div>
+   </div>
+   <div *ngIf="comments">
+    
+   <li *ngFor = "let comment of comments.comments">
+    <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+    <div class="card">
+      <div class ="card-block ">
+        <p class="cbody">{{comment.body}}</p>
+      </div>
+      <div class="card-footer cimage">
+    <img class=" float-left" [src]="comment.author.image" alt="No Image" height="25px" width ="25px"/>
+    <a (click)="callProfile(comment.author.username)"><span>{{comment.author.username}}</span></a>
+    <span>{{comment.createdAt}}</span>
+    <a class="float-right" (click)="deleteComment(comment.id)"><i class="fas fa-trash-alt"></i></a>
+  </div>
+  </div>
+  </div>
+  <div class="col-md-3"></div>
   </div>
 </li>
+    
+</div>
 </div>
 </div>

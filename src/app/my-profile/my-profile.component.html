@@ -1,11 +1,18 @@
 <div *ngIf="token"><app-navbar></app-navbar></div>
 <div *ngIf="!token">
-    <a class="logo conduit" href="#" >Conduit</a>
-    <nav class="navbar">
-    <a href="#">Home</a>&nbsp;&nbsp; 
-    <a (click)="callSignin()">Sign in</a>&nbsp;&nbsp;
-    <a (click)="callSignup()" class="signup"> Sign up</a>  
+  <div class="row">
+    <div class="col-md-12">
+      
+      <nav class="navbar">
+      <a class="logo conduit" href="#" >Conduit</a>
+      <div class="navr">
+      <a href="#">Home</a>&nbsp;&nbsp; 
+      <a (click)="callSignin()">Sign in</a>&nbsp;&nbsp;
+      <a (click)="callSignup()" class="signup float-right"> Sign up</a>  
+    </div>
     </nav>
+    </div>
+    </div>
 </div>
 <div class ="profile-page" *ngIf="user">
     <div class="user-info"> <img [src]="user.profile.image" alt="No Image" height="25px" width ="25px"/>

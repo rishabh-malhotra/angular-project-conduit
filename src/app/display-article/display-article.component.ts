@@ -47,10 +47,9 @@ public match:boolean;
     this.comments=data;
   }
   addComment(comment: NgForm){
-    this.getData.postComment(comment.value,this.slug).subscribe((status: Object )=> {console.log(status)});
+    this.getData.postComment(comment.value,this.slug).subscribe((status: Object )=> { this.route.navigate([`New-Article/articles/${this.slug}`]);});
     this.getData.getAllComments(this.slug).subscribe((status: Array<Object>)=>{
     this.saveComments(status);
-    this.route.navigate([`New-Article/articles/${this.slug}`]);
     });
   }
   deleteComment(id){
