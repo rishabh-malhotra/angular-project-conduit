@@ -41,6 +41,7 @@ public match:boolean;
          this.match=true;
       }
   }
+  console.log(this.match);
   }
   saveComments(data){
     this.comments=data;

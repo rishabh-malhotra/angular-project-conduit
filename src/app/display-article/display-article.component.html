@@ -19,7 +19,7 @@
   <button (click)="editArticle()">Edit Article</button>
   <button (click)="deleteArticle()">Delete Article</button>
 </div>
-<div>
+<div *ngIf=!match>
   <button (click)="followUser()"> Follow {{selected.article.author.username}} </button>
   <button (click)="favoriteArticle()">Favourite Article {{selected.article.favoritesCount}}</button>
 </div>
