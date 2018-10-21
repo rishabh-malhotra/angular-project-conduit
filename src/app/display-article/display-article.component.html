@@ -8,9 +8,9 @@
       <nav class="navbar">
         <a class="logo conduit" href="#">Conduit</a>
         <div class="navr">
-          <a href="#">Home</a>&nbsp;&nbsp;
-          <a (click)="callSignin()">Sign in</a>&nbsp;&nbsp;
-          <a (click)="callSignup()" class="signup float-right"> Sign up</a>
+            <a  style="cursor:pointer" href="#">Home</a>&nbsp;&nbsp;
+            <a routerLink="/Sign-In" routerLinkActive="active-link" style="cursor:pointer">Sign in</a>&nbsp;&nbsp;
+            <a routerLink="/Sign-Up" routerLinkActive="active-link" style="cursor:pointer" class="signup"> Sign up</a>
         </div>
       </nav>
     </div>
@@ -37,17 +37,23 @@
       &nbsp;&nbsp;<button class="btn btn-outline-danger btn-sm " (click)="deleteArticle()"><i class="fas fa-trash-alt"></i>Delete
         Article</button>
     </div>
-    <div *ngIf="!match">
-      <button *ngIf="!following" class="btn btn-outline btn-sm " (click)="followUser()"><i class="far fa-star"></i>
+    <div *ngIf="!match && token">
+      <button *ngIf="!following" class="btn btn-outline btn-sm " (click)="followUser()"><i class="fa fa-plus"></i>
         Follow {{selected.article.author.username}} </button>
       <button *ngIf="following" class="btn  btn-sm " (click)="UnfollowUser()"><i class="far fa-star"></i>
         UnFollow {{selected.article.author.username}} </button>
       &nbsp;&nbsp;
-      <button *ngIf="!selected.article.favorited" class="btn btn-outline-danger btn-sm " (click)="favoriteArticle()"><i
-          class="far fa-heart"></i>Favourite {{selected.article.favoritesCount}}</button>
+      <button *ngIf="!selected.article.favorited" class="btn bt btn-sm btn-outline-success " (click)="favoriteArticle()"><i
+          class="far fa-heart"></i>Favourite Article ({{selected.article.favoritesCount}})</button>
       <button *ngIf="selected.article.favorited" class="btn btn-danger btn-sm " (click)="UnfavoriteArticle()"><i class="far fa-heart"></i>UnFavourite
         {{selected.article.favoritesCount}}</button>
     </div>
+    <div *ngIf="!match && !token">
+        <button class="btn btn-outline btn-sm " (click)="callSignup()"><i class="fa fa-plus"></i>
+          Follow {{selected.article.author.username}} </button> &nbsp;&nbsp;
+        <button  class="btn bt btn-sm btn-outline-success" (click)="callSignup()"><i
+            class="far fa-heart"></i>Favourite Article ({{selected.article.favoritesCount}})</button>
+      </div>
   </div>
   <div class="container page ">
     <p id="divbody">
@@ -55,8 +61,8 @@
     </p>
     <div class="tagdiv">
       <ul>
-        <li *ngFor="let taglist of selected.article.tagList">
-          <p>{{taglist}}</p>
+        <li class="tag-default tag-pill tag-outline" *ngFor="let taglist of selected.article.tagList">
+          {{taglist}}&nbsp;
         </li>
       </ul>
     </div>
@@ -77,16 +83,22 @@
           &nbsp;&nbsp;<button class="btn btn-outline-danger btn-sm " (click)="deleteArticle()"><i class="fas fa-trash-alt"></i>Delete
             Article</button>
         </div>
-        <div *ngIf="!match">
-          <button *ngIf="!following" class="btn btn-outline btn-sm " (click)="followUser()"><i class="far fa-star"></i>
+        <div *ngIf="!match && token">
+          <button *ngIf="!following" class="btn btn-outline btn-sm " (click)="followUser()"><i class="fa fa-plus"></i>
             Follow {{selected.article.author.username}} </button>
-          <button *ngIf="following" class="btn  btn-sm " (click)="UnfollowUser()"><i class="far fa-star"></i>
+          <button *ngIf="following" class="btn  btn-sm " (click)="UnfollowUser()"><i class="fa fa-plus"></i>
             UnFollow {{selected.article.author.username}} </button>
           &nbsp;&nbsp;
-          <button *ngIf="!selected.article.favorited" class="btn btn-outline-danger btn-sm " (click)="favoriteArticle()"><i
-              class="far fa-heart"></i>Favourite{{selected.article.favoritesCount}}</button>
+          <button *ngIf="!selected.article.favorited" class="btn bt btn-sm btn-outline-success" (click)="favoriteArticle()"><i
+              class="far fa-heart"></i>Favourite Article ({{selected.article.favoritesCount}})</button>
           <button *ngIf="selected.article.favorited" class="btn btn-danger btn-sm " (click)="UnfavoriteArticle()"><i
               class="far fa-heart"></i>UnFavourite{{selected.article.favoritesCount}}</button>
+        </div>
+        <div *ngIf="!match && !token">
+          <button class="btn btn-outline btn-sm " (click)="callSignup()"><i class="fa fa-plus"></i>
+            Follow {{selected.article.author.username}} </button> &nbsp;&nbsp;
+          <button  class="btn bt btn-sm btn-outline-success" (click)="callSignup()"><i
+              class="far fa-heart"></i>Favourite Article ({{selected.article.favoritesCount}})</button>
         </div>
       </div>
 
@@ -113,7 +125,7 @@
       </div>
       <div class="col-md-6" *ngIf="!token">
         <p>
-          <a (click)="callSignin()">Sign In </a> or <a (click)="callSignup()">Sign Up </a>
+          <a id="agreen" (click)="callSignin()">Sign In </a> or <a id="agreen" (click)="callSignup()">Sign Up </a>
           to add comment to this article.
         </p>
       </div>
@@ -138,7 +150,7 @@
                 <img *ngIf="!comment.author.image" class=" float-left" ng-src="comment.author.image" height="25px" width="25px" />
                 <a (click)="callProfile(comment.author.username)"><span>{{comment.author.username}}</span></a>
                 <span>{{comment.createdAt}}</span>
-                <a class="float-right" (click)="deleteComment(comment.id)"><i class="fas fa-trash-alt"></i></a>
+                <a class="float-right" style="cursor:pointer" (click)="deleteComment(comment.id)"><i class="fas fa-trash-alt"></i></a>
               </div>
             </div>
           </div>

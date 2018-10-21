@@ -78,10 +78,38 @@ h4{
         color: grey;
         border-bottom-color: #5cb85c;
     } 
-    .router-link{
-        color:#5cb85c;
-        tect-decoration:underline;
-    }
+
 .navfeed a:hover{
     opacity:0.3;
 }    
+.tagdiv li{
+        font-weight: 300;
+        font-size: .8rem!important;
+        padding-top: 0!important;
+        padding-bottom: 0!important;
+        display: inline-block!important;
+    
+}
+.tag-default.tag-outline {
+    border: 1px solid #ddd;
+    color: #aaa!important;
+    background: 0 0!important;
+}
+.tag-default {
+    color: #fff!important;
+    font-size: .8rem;
+    padding-top: .1rem;
+    padding-bottom: .1rem;
+    white-space: nowrap;
+    margin-right: 3px;
+    margin-bottom: .2rem;
+    display: inline-block;
+}
+.tag-pill {
+    padding-right: .6em;
+    padding-left: .6em;
+    border-radius: 10rem;
+}
+.tag-default a{
+    text-decoration:none;
+}

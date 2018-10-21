@@ -21,6 +21,7 @@ export class DisplayArticleComponent implements OnInit {
 
   ngOnInit() {
     this.match = false;
+    this.token=localStorage.getItem('Token');
     this.router.paramMap.subscribe(params => {
       this.slug = params.get("slug");
       this.getData.getArticleDetails(this.slug).subscribe((status: Object) => {

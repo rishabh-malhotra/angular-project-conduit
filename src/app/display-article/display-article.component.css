@@ -117,7 +117,7 @@ li{
     float: right;
 }
 .navr a{
-    color: black;
+    color: grey;
     text-decoration: none;
 }
 .navr a:hover{
@@ -134,4 +134,53 @@ li{
 }
 .tagdiv ul li p {
     color:  #5cb85c;
+}
+.active-link{
+    color: black!important;
+    opacity: 1!important;
+}
+.btn-sm, .btn-group-sm>.btn {
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    border-radius: .2rem;
+}
+.tagdiv li{
+    font-weight: 300;
+    font-size: .8rem!important;
+    padding-top: 0!important;
+    padding-bottom: 0!important;
+    display: inline-block!important;
+
+}
+.tag-default.tag-outline {
+border: 1px solid #ddd;
+color: #aaa!important;
+background: 0 0!important;
+}
+.tag-default {
+color: #fff!important;
+font-size: .8rem;
+padding-top: .1rem;
+padding-bottom: .1rem;
+white-space: nowrap;
+margin-right: 3px;
+margin-bottom: .2rem;
+display: inline-block;
+}
+.tag-pill {
+padding-right: .6em;
+padding-left: .6em;
+border-radius: 10rem;
+}
+#divbody{
+    font-family: 'source serif pro',serif!important;
+    font-size: 1.2rem!important;
+    line-height: 1.8rem!important;
+    margin-bottom: 2rem!important;
+}
+.bt{
+    border:1px solid green;
+}
+#agreen{
+   color:#5cb85c;
 }

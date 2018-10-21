@@ -23,12 +23,12 @@
               <span>&hearts;{{article.favoritesCount}}</span>
             </button>
           </div>
-          <div class="tagdiv">
+          <div class="tagdiv">  
             <h3>{{article.title}}</h3>
             <p style="margin-top: 0px;">{{article.description}}</p>
             <ul>
-              <li *ngFor="let taglist of article.tagList">
-                  <button (click)="clickonTag(taglist)" class="btn btn-outline-primary btn-sm">{{taglist}}</button>&nbsp;
+              <li *ngFor="let taglist of article.tagList" class="tag-default tag-pill tag-outline">
+                  <a style="cursor:pointer" (click)="getArticleDetails(article.slug)">{{taglist}}</a>&nbsp;
               </li>
             </ul>
             <a style="cursor:pointer" class="readmore" (click)="getArticleDetails(article.slug)">Read more...</a>
