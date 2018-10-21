@@ -16,7 +16,9 @@
   </div>
 </div>
 <div class="profile-page" *ngIf="user">
-  <div class="user-info"> <img class="user-image" ng-src="user.profile.image"  height="25px" width="25px" />
+  <div class="user-info"> 
+      <img *ngIf="user.profile.image" class="user-image" [src]="user.profile.image"  height="25px" width="25px" />
+    <img *ngIf="!user.profile.image" class="user-image" ng-src="user.profile.image"  height="25px" width="25px" />
     <h4>{{user.profile.username}}</h4>
     <p>{{user.profile.bio}}</p>
     <div *ngIf="match">
@@ -47,7 +49,9 @@
         <ul class="demo" *ngIf="articles">
           <li class="article-preview" *ngFor="let article of articles.articles">
             <div class="article-meta">
-              <img ng-src="article.author.image"  height="25px" width="25px" />
+                <img *ngIf="article.author.image" [src]="article.author.image"  height="25px" width="25px" />
+              <img *ngIf="!article.author.image" ng-src="article.author.image"  height="25px" width="25px" />
+              
               <div class="info">
                 <a class="author" (click)="callProfile(article.author.username)">{{article.author.username}}</a>
                 <span class="date">{{article.createdAt}}</span>

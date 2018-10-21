@@ -10,7 +10,8 @@
       <ul class="demo" *ngIf="selected">
         <li class="article-preview" *ngFor="let article of selected.articles">
           <div class="article-meta">
-            <img ng-src="article.author.image" height="25px" width="25px" />
+              <img *ngIf="article.author.image" [src]="article.author.image" height="25px" width="25px" />
+            <img *ngIf="!article.author.image" ng-src="article.author.image" height="25px" width="25px" />
             <div class="info">
               <a class="author" (click)="callProfile(article.author.username)">{{article.author.username}}</a>
               <span class="date">{{article.createdAt}}</span>
