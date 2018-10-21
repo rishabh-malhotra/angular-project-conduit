@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {GlobalFeedComponent} from '../home/global-feed/global-feed.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConduitService } from './conduit.service'
 @Component({
@@ -11,8 +10,9 @@ export class ConduitComponent implements OnInit {
 
   public selected:Array<Object>;
   limit: Number = 10;
-    articleCount:Number
-    itemPages:any
+  articleCount:Number
+  itemPages:any
+  tag:string
 
   constructor(private router: ActivatedRoute, private route: Router,private getData: ConduitService) { }
 
@@ -24,7 +24,17 @@ export class ConduitComponent implements OnInit {
         (val, index) => index + 1
       );
       });
+
   }
+  callGlobalFeed() {
+    this.getData.getArticles().subscribe((status: Array<Object>) => {
+      this.saveArticles(status);
+      this.itemPages = Array.from(
+        new Array(Math.ceil(+this.articleCount / +this.limit)),
+        (val, index) => index + 1
+      );
+    });
+  }  
   getArticleDetails(data){
     this.route.navigate(['articles',data]);
    }
@@ -51,5 +61,15 @@ saveArticles(articles){
     console.log(username);
     this.route.navigate(["My-Profile",username])
   
+  }
+  clickonTag(e) {
+    this.getData.getTagDetails(e).subscribe((data) => {
+      console.log(data);
+      this.saveTagName(e);
+      this.saveArticles(data)
+     })
+   }
+  saveTagName(e) {
+    this.tag = e;
   }
 }

@@ -1,0 +1,11 @@
+<div class="shadow p-3 bg-light rounded sidebar">
+  <div>Popular Tags
+ </div>
+  <div>
+    <span *ngFor="let tag of tags">
+        <span class="badge badge-secondary colortag mx-1">
+        <a (click)="sendTag(tag)">{{tag}}</a>
+       </span>
+      </span>
+    </div>
+</div>

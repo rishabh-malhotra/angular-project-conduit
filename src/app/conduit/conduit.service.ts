@@ -14,4 +14,7 @@ user:Object;
   makeFeedsRequestonPages(offset){
     return this.http.get(`${this.url}articles?limit=10&offset=${offset}`)
    }
+   getTagDetails(e){
+    return this.http.get(`${this.url}articles?tag=${e}`)
+   }
 }

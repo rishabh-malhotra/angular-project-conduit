@@ -21,7 +21,7 @@
 <div class="row">
 <div class="col-md-9">
 <ul class="demo" *ngIf="selected">
-  <h4>Global Feed</h4>
+    <a (click)="callGlobalFeed()" >Global Feed</a> &nbsp;&nbsp;<a *ngIf="tag">#{{tag}}</a>
     <li class="article-preview" *ngFor="let article of selected.articles" >
     <div class="article-meta">
     <img [src]="article.author.image" alt="No Image" height="25px" width ="25px"/>
@@ -48,7 +48,11 @@
     </li>
      <br><br>
   </ul>
+  
   </div>
+  <div class="col-md-3">
+      <app-tags (listTag)=clickonTag($event)></app-tags>
+    </div>
 </div>
   <div *ngIf="articleCount">
     <app-list [articleCount] = itemPages (listNumberclick)=clickonList($event)></app-list>

@@ -19,4 +19,11 @@ export class YourFeedService {
   makeFeedsRequestonPages(offset){
     return this.http.get(`${this.url}articles?limit=10&offset=${offset}`)
    }
+   getTagDetails(e){
+    return this.http.get(`${this.url}articles?tag=${e}`)
+   }
+   globalFeedArticles(){
+    var a= this.http.get(`${this.url}articles`);
+    return a;
+    }
 }

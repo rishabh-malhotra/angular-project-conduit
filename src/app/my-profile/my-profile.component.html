@@ -1,61 +1,63 @@
-<div *ngIf="token"><app-navbar></app-navbar></div>
+<div *ngIf="token">
+  <app-navbar></app-navbar>
+</div>
 <div *ngIf="!token">
   <div class="row">
     <div class="col-md-12">
-      
       <nav class="navbar">
-      <a class="logo conduit" href="#" >Conduit</a>
-      <div class="navr">
-      <a href="#">Home</a>&nbsp;&nbsp; 
-      <a (click)="callSignin()">Sign in</a>&nbsp;&nbsp;
-      <a (click)="callSignup()" class="signup float-right"> Sign up</a>  
+        <a class="logo conduit" href="#">Conduit</a>
+        <div class="navr">
+          <a href="#">Home</a>&nbsp;&nbsp;
+          <a (click)="callSignin()">Sign in</a>&nbsp;&nbsp;
+          <a (click)="callSignup()" class="signup float-right"> Sign up</a>
+        </div>
+      </nav>
     </div>
-    </nav>
-    </div>
-    </div>
-</div>
-<div class ="profile-page" *ngIf="user">
-    <div class="user-info"> <img [src]="user.profile.image" alt="No Image" height="25px" width ="25px"/>
-     <h4>{{user.profile.username}}</h4>
-     <p>{{user.profile.bio}}</p>
-     <button class="btn btn-sm btn-outline-secondary action-btn" (click)="callSettings()"><i class="fas fa-cog"></i>Edit Profile Settings</button>
- </div>
- <div class="container">
-  <div class ="nav">
-    <nav>
-      <a (click)="callMyArticles()">My Articles</a>&nbsp;&nbsp;&nbsp;
-      <a (click)="callFavoriteArticles()">Favorite Articles</a>
-    </nav>  
   </div>
-  <div class="row">
-    <div class="col-md-9">
-    <ul class="demo" *ngIf="articles">
-      <li class="article-preview" *ngFor="let article of articles.articles" >
-      <div class="article-meta">
-        <img [src]="article.author.image" alt="No Image" height="25px" width ="25px"/>
-        <div class="info">
-         <a class="author" (click)="callProfile(article.author.username)">{{article.author.username}}</a>
-        <span class="date">{{article.createdAt}}</span>
-      </div>
-      <button class="btn btn-sm btn-outline-primary float-right">
-      <span >&hearts;{{article.favoritesCount}}</span>
-    </button>
+</div>
+<div class="profile-page" *ngIf="user">
+  <div class="user-info"> <img [src]="user.profile.image" alt="No Image" height="25px" width="25px" />
+    <h4>{{user.profile.username}}</h4>
+    <p>{{user.profile.bio}}</p>
+    <button class="btn btn-sm btn-outline-secondary action-btn" (click)="callSettings()"><i class="fas fa-cog"></i>Edit
+      Profile Settings</button>
+  </div>
+  <div class="container">
+    <div class="nav">
+      <nav>
+        <a (click)="callMyArticles()">My Articles</a>&nbsp;&nbsp;&nbsp;
+        <a (click)="callFavoriteArticles()">Favorite Articles</a>
+      </nav>
     </div>
-      <div>
-          <h3>{{article.title}}</h3>
-          <p style="margin-top: 0px;">{{article.description}}</p>
-          <ul>
-          <li *ngFor="let taglist of article.tagList">
-              <span>{{taglist}}</span>&nbsp;
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="demo" *ngIf="articles">
+          <li class="article-preview" *ngFor="let article of articles.articles">
+            <div class="article-meta">
+              <img [src]="article.author.image" alt="No Image" height="25px" width="25px" />
+              <div class="info">
+                <a class="author" (click)="callProfile(article.author.username)">{{article.author.username}}</a>
+                <span class="date">{{article.createdAt}}</span>
+              </div>
+              <button class="btn btn-sm btn-outline-primary float-right">
+                <span>&hearts;{{article.favoritesCount}}</span>
+              </button>
+            </div>
+            <div>
+              <h3>{{article.title}}</h3>
+              <p style="margin-top: 0px;">{{article.description}}</p>
+              <ul>
+                <li *ngFor="let taglist of article.tagList">
+                  <span>{{taglist}}</span>&nbsp;
+                </li>
+              </ul>
+              <a class="readmore" (click)="getArticleDetails(article.slug)">Read more...</a>
+            </div>
           </li>
         </ul>
-          <a class="readmore" (click)="getArticleDetails(article.slug)">Read more...</a>
-          </div>
-        </li>
-     </ul>
+      </div>
     </div>
+    <div *ngIf="articleCount">
+      <app-list [articleCount]=itemPages (listNumberclick)=clickonList($event)></app-list>
     </div>
-  <div *ngIf="articleCount">
-    <app-list [articleCount] = itemPages (listNumberclick)=clickonList($event)></app-list>
-  </div>
   </div>

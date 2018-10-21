@@ -13,6 +13,7 @@ export class YourFeedComponent implements OnInit {
   limit: Number = 10;
   articleCount:Number
   itemPages:any
+  tag:string
   constructor(private getData: YourFeedService,private router: ActivatedRoute,
   private route: Router) { }
   ngOnInit() {
@@ -29,19 +30,46 @@ export class YourFeedComponent implements OnInit {
     this.selected=articles;
     this.articleCount= articles.articlesCount;
     }
-    getArticleDetails(data){
-      this.route.navigate(['articles',data]);
-  
-    }
-    clickonList(e){
-      let offset = e * +this.limit;
-      this.getData.makeFeedsRequestonPages(offset).subscribe((data) => {
-          this.saveArticles(data)
+  getArticleDetails(data){
+    this.route.navigate(['articles',data]);
+  }
+  clickonList(e){
+    let offset = e * +this.limit;
+    this.getData.makeFeedsRequestonPages(offset).subscribe((data) => {
+      this.saveArticles(data)
          
-      });
-    }
-    callProfile(username){
-      console.log(username);
-      this.route.navigate(["My-Profile",username])
-    }
+    });
+  }
+  callProfile(username){
+    console.log(username);
+    this.route.navigate(["My-Profile",username])
+  }
+  clickonTag(e){
+    this.getData.getTagDetails(e).subscribe((data)=>{
+      console.log(data);
+      this.saveTagName(e);
+      this.saveArticles(data)
+    })
+  }
+  saveTagName(e){
+    this.tag=e;
+  }
+  getGlobalFeed() {
+    this.getData.globalFeedArticles().subscribe((status: Array<Object>) => {
+    this.saveArticles(status);
+        this.itemPages = Array.from(
+        new Array(Math.ceil(+this.articleCount / +this.limit)),
+        (val, index) => index + 1
+      );
+    })
+  }
+  getYourFeed(){
+    this.getData.yourFeedArticles().subscribe((status: Array<Object>) => {
+    this.saveArticles(status);
+    this.itemPages = Array.from(
+    new Array(Math.ceil(+this.articleCount / +this.limit)),
+      (val, index) => index + 1
+      );
+    })
+  }
 }

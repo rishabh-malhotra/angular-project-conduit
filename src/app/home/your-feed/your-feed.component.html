@@ -1,40 +1,44 @@
 <div class="container">
-    <app-navbar></app-navbar>
-    <nav>
-      <a id="yourfeed" routerLink="/Home/Your-Feed" routerLinkActive="active">Your Feed</a>&nbsp;&nbsp;
-      <a routerLink="/Home/Global-Feed" routerLinkActive="active">Global Feed</a>
-    </nav>
-    <div class="row">
-        <div class="col-md-9">
-        <ul class="demo" *ngIf="selected">
-          <li class="article-preview" *ngFor="let article of selected.articles" >
+  <app-navbar></app-navbar>
+  <nav>
+    <a (click)="getYourFeed()">Your Feed</a>&nbsp;&nbsp;
+    <a (click)="getGlobalFeed()">Global Feed</a>&nbsp;&nbsp;
+    <a *ngIf="tag">#{{tag}}</a>
+  </nav>
+  <div class="row">
+    <div class="col-md-9">
+      <ul class="demo" *ngIf="selected">
+        <li class="article-preview" *ngFor="let article of selected.articles">
           <div class="article-meta">
-            <img [src]="article.author.image" alt="No Image" height="25px" width ="25px"/>
+            <img [src]="article.author.image" alt="No Image" height="25px" width="25px" />
             <div class="info">
-             <a class="author" (click)="callProfile(article.author.username)">{{article.author.username}}</a>
-            <span class="date">{{article.createdAt}}</span>
+              <a class="author" (click)="callProfile(article.author.username)">{{article.author.username}}</a>
+              <span class="date">{{article.createdAt}}</span>
+            </div>
+            <button class="btn btn-sm btn-outline-primary float-right">
+              <span>&hearts;{{article.favoritesCount}}</span>
+            </button>
           </div>
-          <button class="btn btn-sm btn-outline-primary float-right">
-          <span >&hearts;{{article.favoritesCount}}</span>
-        </button>
-        </div>
           <div>
-              <h3>{{article.title}}</h3>
-              <p style="margin-top: 0px;">{{article.description}}</p>
-              <ul>
+            <h3>{{article.title}}</h3>
+            <p style="margin-top: 0px;">{{article.description}}</p>
+            <ul>
               <li *ngFor="let taglist of article.tagList">
-                  <span>{{taglist}}</span>&nbsp;
+                <span>{{taglist}}</span>&nbsp;
               </li>
             </ul>
-              <a class="readmore" (click)="getArticleDetails(article.slug)">Read more...</a>
-              </div>
-            </li>
-        
-            
-          </ul>
-        </div>
-        </div>
-    <div *ngIf="articleCount">
-        <app-list [articleCount] = itemPages (listNumberclick)=clickonList($event)></app-list>
+            <a class="readmore" (click)="getArticleDetails(article.slug)">Read more...</a>
+          </div>
+        </li>
+
+
+      </ul>
     </div>
+    <div class="col-md-3">
+      <app-tags (listTag)=clickonTag($event)></app-tags>
     </div>
+  </div>
+  <div *ngIf="articleCount">
+    <app-list [articleCount]=itemPages (listNumberclick)=clickonList($event)></app-list>
+  </div>
+</div>

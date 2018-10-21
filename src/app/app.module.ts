@@ -15,9 +15,9 @@ import { EditArticleComponent } from './edit-article/edit-article.component';
 import { ConduitComponent } from './conduit/conduit.component';
 import { YourFeedComponent } from './home/your-feed/your-feed.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { GlobalFeedComponent } from './home/global-feed/global-feed.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ListComponent } from './list/list.component';
+import { TagsComponent } from './tags/tags.component';
 
 
 const appRoutes: Routes = [
@@ -44,11 +44,11 @@ const appRoutes: Routes = [
     EditArticleComponent,
     ConduitComponent,
     YourFeedComponent,
-    GlobalFeedComponent,
     DisplayArticleComponent,
     NavbarComponent,
     SignUpComponent,
     ListComponent,
+    TagsComponent,
     
     
   ],
