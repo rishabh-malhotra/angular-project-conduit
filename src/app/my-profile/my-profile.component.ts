@@ -13,14 +13,26 @@ export class MyProfileComponent implements OnInit {
   public user: Object;
   public articles: Array<object>;
   public username:string;
+  public userUserName:string;
+  public userToken:string;
   limit: Number = 10;
   articleCount:Number;
   itemPages:any;
   public token: string;
+  match:boolean;
 
   ngOnInit() {
     this.router.paramMap.subscribe(params => {
       this.username = params.get("username");
+      this.userUserName=localStorage.getItem('username');
+      console.log(this.userToken);
+      this.userToken=localStorage.getItem('Token');
+      this.match=false;
+      if(this.userToken){
+        if(this.userUserName===this.username){
+          this.match=true;
+        }
+      }
       this.getData.getProfile(this.username).subscribe((status)=>{
         this.saveUser(status,this.username);
         this.callMyArticles();

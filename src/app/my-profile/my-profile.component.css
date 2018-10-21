@@ -124,3 +124,11 @@ h4{
     color: #5cb85c;
     text-decoration: none;
 } 
+.user-image{
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    margin-bottom: 1rem;
+    vertical-align: middle;
+    border: 0;
+}

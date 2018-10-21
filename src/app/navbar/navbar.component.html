@@ -6,7 +6,7 @@
         <a routerLink="/Home" routerLinkActive="active">Home</a>&nbsp;&nbsp;
         <a routerLink="/New-Article" routerLinkActive="active"><i class="far fa-edit"></i>New Article</a>&nbsp;&nbsp;
         <a routerLink="/Settings" routerLinkActive="active"><i class="fas fa-cog"></i>Settings</a>&nbsp;&nbsp;
-        <img class="user-pic" [src]="userimage">
+        <img class="user-pic" ng-src="userimage">
         <a (click)="callProfile()">{{username}}</a>  
       </div>
     </nav>

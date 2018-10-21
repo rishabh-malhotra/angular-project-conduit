@@ -16,11 +16,24 @@
   </div>
 </div>
 <div class="profile-page" *ngIf="user">
-  <div class="user-info"> <img [src]="user.profile.image" alt="No Image" height="25px" width="25px" />
+  <div class="user-info"> <img class="user-image" ng-src="user.profile.image"  height="25px" width="25px" />
     <h4>{{user.profile.username}}</h4>
     <p>{{user.profile.bio}}</p>
-    <button class="btn btn-sm btn-outline-secondary action-btn" (click)="callSettings()"><i class="fas fa-cog"></i>Edit
+    <div *ngIf="match">
+    <button class="float-right btn btn-sm btn-outline-secondary action-btn" (click)="callSettings()"><i class="fas fa-cog"></i>Edit
       Profile Settings</button>
+    </div>
+    <div *ngIf="!match && userToken">   
+    <button (click)="followUser()" class="float-right btn btn-sm btn-outline-secondary" ><i class="fa fa-plus"></i>
+      Follow {{username}} </button>
+    <button (click)="UnfollowUser()" class="float-right btn  btn-sm btn-secondary" ><i class="fa fa-minus"></i>
+      UnFollow {{username}} </button>
+    &nbsp;&nbsp;
+  </div>
+  <div *ngIf="!match && !userToken">   
+      <button (click)="callSignup()" class="float-right btn btn-sm btn-outline-secondary" ><i class="fa fa-plus"></i>
+        Follow {{username}} </button>
+    </div>
   </div>
   <div class="container">
     <div class="nav">
@@ -34,7 +47,7 @@
         <ul class="demo" *ngIf="articles">
           <li class="article-preview" *ngFor="let article of articles.articles">
             <div class="article-meta">
-              <img [src]="article.author.image" alt="No Image" height="25px" width="25px" />
+              <img ng-src="article.author.image"  height="25px" width="25px" />
               <div class="info">
                 <a class="author" (click)="callProfile(article.author.username)">{{article.author.username}}</a>
                 <span class="date">{{article.createdAt}}</span>
