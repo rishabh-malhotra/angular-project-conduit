@@ -26,4 +26,22 @@ export class YourFeedService {
     var a= this.http.get(`${this.url}articles`);
     return a;
     }
+    makeFavorite(slug) {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          
+          'Authorization': 'Token ' + localStorage.getItem('Token')
+        })
+      };
+      return this.http.post(`${this.url}articles/${slug}/favorite`,JSON.stringify(slug),httpOptions);
+    }
+    makeUnFavorite(slug) {
+      const httpOptions = {
+        headers: new HttpHeaders({
+          
+          'Authorization': 'Token ' + localStorage.getItem('Token')
+        })
+      };
+      return this.http.delete(`${this.url}articles/${slug}/favorite`,httpOptions);
+     }
 }

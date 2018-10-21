@@ -15,6 +15,7 @@ export class DisplayArticleComponent implements OnInit {
   public token: string;
   public match: boolean;
   comments: Array<Object>;
+  following:boolean;
   constructor(private router: ActivatedRoute, private getData: DisplayServiceService,
     private route: Router) { }
 
@@ -47,6 +48,7 @@ export class DisplayArticleComponent implements OnInit {
     this.selected = data;
     this.token = localStorage.getItem('Token');
     this.username = localStorage.getItem('username');
+    this.following=data.article.author.following;
     if (this.token) {
       if (this.username === data.article.author.username) {
 
@@ -86,9 +88,23 @@ export class DisplayArticleComponent implements OnInit {
     this.route.navigate(['Editor', this.slug]);
   }
   followUser() {
-    this.getData.follow(this.selected).subscribe((status) => { console.log(status) })
+    this.getData.follow(this.selected).subscribe((status) => { console.log(status);
+      this.saveFollowing(status);
+      })
   }
   favoriteArticle() {
-    this.getData.favorite(this.slug).subscribe((status) => { console.log(status) })
+    this.getData.favorite(this.slug).subscribe((status) => { console.log(status);
+      this.saveData(status); })
+  }
+  UnfollowUser() {
+    this.getData.Unfollow(this.selected).subscribe((status) => { console.log(status);
+      this.saveFollowing(status);
+      })
+  }
+  UnfavoriteArticle() {
+    this.getData.Unfavorite(this.slug).subscribe((status) => { console.log(status); this.saveData(status); })
+  }
+  saveFollowing(status){
+    this.following=status.profile.following;
   }
 }

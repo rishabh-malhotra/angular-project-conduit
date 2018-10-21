@@ -66,3 +66,15 @@ h4{
         color: #bbb;
         vertical-align: middle;
     } 
+    .tagdiv ul{
+        list-style: none;
+       
+    }
+    .tagdiv ul li{
+        float: right;
+       
+    }
+    .tagdiv ul li button {
+        color: grey;
+        border-bottom-color: #5cb85c;
+    } 

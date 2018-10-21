@@ -21,7 +21,7 @@ export class NewArticleComponent implements OnInit {
       title: form.value.title,
       description: form.value.description,
       body: form.value.body,
-      tagList: [form.value.tag, form.value.tag]
+      tagList: [form.value.tag]
     }
 
     this.getData.publishArticle(article).subscribe((status:Object)=>{console.log(status);

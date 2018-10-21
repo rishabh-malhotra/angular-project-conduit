@@ -7,6 +7,9 @@ li{
     padding: 2rem;
     margin-bottom: 2rem;
 }
+#divbody{
+    font-size: 2rem;
+}
 .article-meta{
     display: block;
     position: relative;
@@ -120,4 +123,15 @@ li{
 .navr a:hover{
     color: #5cb85c;
     text-decoration: none;
+}
+.tagdiv ul{
+    list-style: none;
+   
+}
+.tagdiv ul li{
+   
+   list-style: none;
+}
+.tagdiv ul li p {
+    color:  #5cb85c;
 }
