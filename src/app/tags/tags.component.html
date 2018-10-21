@@ -4,7 +4,7 @@
   <div>
     <span *ngFor="let tag of tags">
         <span class="badge badge-secondary colortag mx-1">
-        <a (click)="sendTag(tag)">{{tag}}</a>
+        <a style="cursor:pointer" (click)="sendTag(tag)">{{tag}}</a>
        </span>
       </span>
     </div>

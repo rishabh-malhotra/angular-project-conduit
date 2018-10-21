@@ -21,18 +21,18 @@
     <img *ngIf="!user.profile.image" class="user-image" ng-src="user.profile.image"  height="25px" width="25px" />
     <h4>{{user.profile.username}}</h4>
     <p>{{user.profile.bio}}</p>
-    <div *ngIf="match">
+    <div class="setbutton" *ngIf="match">
     <button class="float-right btn btn-sm btn-outline-secondary action-btn" (click)="callSettings()"><i class="fas fa-cog"></i>Edit
       Profile Settings</button>
     </div>
-    <div *ngIf="!match && userToken">   
+    <div class="setbutton" *ngIf="!match && userToken">   
     <button (click)="followUser()" class="float-right btn btn-sm btn-outline-secondary" ><i class="fa fa-plus"></i>
       Follow {{username}} </button>
     <button (click)="UnfollowUser()" class="float-right btn  btn-sm btn-secondary" ><i class="fa fa-minus"></i>
       UnFollow {{username}} </button>
     &nbsp;&nbsp;
   </div>
-  <div *ngIf="!match && !userToken">   
+  <div class="setbutton" *ngIf="!match && !userToken">   
       <button (click)="callSignup()" class="float-right btn btn-sm btn-outline-secondary" ><i class="fa fa-plus"></i>
         Follow {{username}} </button>
     </div>
