@@ -43,12 +43,7 @@ saveArticles(articles){
   this.articleCount= articles.articlesCount;
   console.log(this.articleCount);
   }
-  callSignin(){
-    this.route.navigate(["Sign-In"]);
-  }
-  callSignup(){
-    this.route.navigate(['Sign-Up']);
-  }
+ 
   clickonList(e){
     let offset = e * +this.limit;
     this.getData.makeFeedsRequestonPages(offset).subscribe((data) => {

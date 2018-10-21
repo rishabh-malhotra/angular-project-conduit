@@ -34,3 +34,7 @@
     opacity: 3!important;
     margin-right: 5px;
 }
+.active-link{
+    color:black!important;
+    opacity: 1!important;
+}

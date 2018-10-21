@@ -4,9 +4,9 @@
       <nav class="navbar">
         <a class="logo conduit" href="#" >Conduit</a>
         <div class="navr">
-          <a href="#">Home</a>&nbsp;&nbsp; 
-          <a (click)="callSignin()">Sign in</a>&nbsp;&nbsp;
-          <a (click)="callSignup()" class="signup float-right"> Sign up</a>  
+            <a  style="cursor:pointer" href="#">Home</a>&nbsp;&nbsp; 
+            <a routerLink="/Sign-In" routerLinkActive="active-link" style="cursor:pointer" (click)="callSignin()">Sign in</a>&nbsp;&nbsp;
+            <a routerLink="/Sign-Up" routerLinkActive="active-link" style="cursor:pointer" (click)="callSignup()" class="signup"> Sign up</a>  
         </div>
       </nav>
     </div>
@@ -16,7 +16,7 @@
   <form #signInForm = "ngForm" (ngSubmit) = "loginUser(signInForm)" >
     <div class="col-md-6 offset-md-3 col-xs-12">
       <h1 class="text-xs-center signin">Sign In</h1>
-      <a id="signup" class="form-control-lg" (click)="callSignup()">Need an account?</a>
+      <a style="cursor:pointer" id="signup" class="form-control-lg" (click)="callSignup()">Need an account?</a>
       <fieldset class="form-group">
         <input type ="text" class="form-control form-control-lg" placeholder="Email" name ="email" ngModel>
       </fieldset>

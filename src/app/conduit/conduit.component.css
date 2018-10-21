@@ -44,7 +44,7 @@
     float: right;
 }
 .navr a{
-    color: black;
+    color: grey;
     text-decoration: none;
 }
 .navr a:hover{
@@ -63,7 +63,7 @@
 h4{
     color:#5cb85c;
     text-decoration-line: underline
-}
+} 
 .article-preview{
     border-top: 1px solid rgba(0,0,0,.1);
     padding: 1.5rem 0;
@@ -106,9 +106,30 @@ h4{
     border-color: #5cb85c;
 }
 .readmore{
-        max-width: 30%;
-        font-size: .8rem;
-        font-weight: 300;
-        color: #bbb;
-        vertical-align: middle;
-    }
+    max-width: 30%;
+    font-size: .8rem;
+    font-weight: 300;
+    color: #bbb;
+    vertical-align: middle;
+}
+.active-link{
+    color: black!important;
+    opacity: 1!important;
+}
+.tagdiv ul{
+    list-style: none;
+   
+}
+.tagdiv ul li{
+    float: right;
+   
+}
+.tagdiv ul li button {
+    color: grey;
+    border-bottom-color: #5cb85c;
+}
+
+#gfeed{
+    color:#5cb85c!important;
+    text-decoration:underline!important;
+}

@@ -1,13 +1,12 @@
 <div class="main">
   <div class="row">
     <div class="col-md-12">
-  
   <nav class="navbar">
-    <a class="logo conduit" href="#" >Conduit</a>
+    <a  class="logo conduit" href="#" >Conduit</a>
     <div class="navr">
-    <a href="#">Home</a>&nbsp;&nbsp; 
-    <a (click)="callSignin()">Sign in</a>&nbsp;&nbsp;
-    <a (click)="callSignup()" class="signup"> Sign up</a>    
+    <a class="active-link" style="cursor:pointer" href="#">Home</a>&nbsp;&nbsp; 
+    <a routerLink="/Sign-In" routerLinkActive="active-link" style="cursor:pointer" >Sign in</a>&nbsp;&nbsp;
+    <a routerLink="/Sign-Up" routerLinkActive="active-link" style="cursor:pointer"  class="signup"> Sign up</a>    
     </div>
   </nav>
 </div>
@@ -21,13 +20,13 @@
 <div class="row">
 <div class="col-md-9">
 <ul class="demo" *ngIf="selected">
-    <a (click)="callGlobalFeed()" >Global Feed</a> &nbsp;&nbsp;<a *ngIf="tag">#{{tag}}</a>
+    <a style="cursor:pointer" id="gfeed" (click)="callGlobalFeed()" >Global Feed</a> &nbsp;&nbsp;<a *ngIf="tag">#{{tag}}</a>
     <li class="article-preview" *ngFor="let article of selected.articles" >
     <div class="article-meta">
     <img *ngIf="article.author.image" [src]="article.author.image" height="25px" width ="25px"/>
     <img *ngIf="!article.author.image" ng-src="article.author.image" height="25px" width ="25px"/>
     <div class="info">
-    <a class="author" (click)="callProfile(article.author.username)"><span>{{article.author.username}}</span></a><br>
+    <a style="cursor: pointer;" class="author" (click)="callProfile(article.author.username)"><span>{{article.author.username}}</span></a><br>
     <span class="date">{{article.createdAt}}</span>
   </div>
   <button class="btn btn-sm btn-outline-primary float-right">
@@ -35,21 +34,19 @@
     <span>	&hearts;{{article.favoritesCount}}</span>
   </button>
   </div>
-  <div>
+  <div class="tagdiv">
       <h3>{{article.title}}</h3>
-      <p style="margin-top:0px">{{article.description}}</p>
+      <p style="margin-top: 0px;">{{article.description}}</p>
       <ul>
-      <li *ngFor="let taglist of article.tagList">
-          <span>{{taglist}}</span>&nbsp;
-      </li>
-    </ul>
-    
+        <li *ngFor="let taglist of article.tagList">
+            <button (click)="clickonTag(taglist)" class="btn btn-outline-primary btn-sm">{{taglist}}</button>&nbsp;
+        </li>
+      </ul>
       <a style="cursor:pointer" class="readmore" (click)="getArticleDetails(article.slug)">Read more...</a>
-      </div>
+    </div> 
     </li>
-     <br><br>
+     
   </ul>
-  
   </div>
   <div class="col-md-3">
       <app-tags (listTag)=clickonTag($event)></app-tags>

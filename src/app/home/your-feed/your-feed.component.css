@@ -2,7 +2,7 @@ nav a{
     color: black;
 }
 #yourfeed{
-color: #5cb85c
+color: #5cb85c;
 }
  .main {
     width: 100% !important;
@@ -78,3 +78,10 @@ h4{
         color: grey;
         border-bottom-color: #5cb85c;
     } 
+    .router-link{
+        color:#5cb85c;
+        tect-decoration:underline;
+    }
+.navfeed a:hover{
+    opacity:0.3;
+}    

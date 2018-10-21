@@ -3,12 +3,12 @@
     <nav class="navbar">
       <a class="logo conduit"  routerLink="/Home" routerLinkActive="active" >Conduit</a>
       <div class="navr">
-        <a routerLink="/Home" routerLinkActive="active">Home</a>&nbsp;&nbsp;
-        <a routerLink="/New-Article" routerLinkActive="active"><i class="far fa-edit"></i>New Article</a>&nbsp;&nbsp;
-        <a routerLink="/Settings" routerLinkActive="active"><i class="fas fa-cog"></i>Settings</a>&nbsp;&nbsp;
-        <img *ngIf="userimage" class="user-pic" [src]="userimage">
-        <img *ngIf="!userimage" class="user-pic" ng-src="userimage">
-        <a (click)="callProfile()">{{username}}</a>  
+        <a routerLink="/Home" routerLinkActive="active-link">Home</a>&nbsp;&nbsp;
+        <a routerLink="/New-Article" routerLinkActive="active-link"><i class="far fa-edit"></i>New Article</a>&nbsp;&nbsp;
+        <a routerLink="/Settings" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+          true}" ><i class="fas fa-cog"></i>Settings</a>&nbsp;&nbsp;
+        <img class="user-pic" [src]="userimage">
+        <a routerLink="/My-Profile/{{username}}" routerLinkActive="active-link" >{{username}}</a>  
       </div>
     </nav>
   </div>

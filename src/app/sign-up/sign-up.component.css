@@ -27,15 +27,17 @@ getfont{
     float: right;
 }
 .navr a{
-    color: black;
+    color: grey;
     text-decoration: none;
+    cursor:pointer;
 }
 .navr a:hover{
     color: #5cb85c;
     text-decoration: none;
 }
 #signin{
-    color: #5cb85c; 
+    color: #5cb85c;
+    cursor:pointer 
     
 }
 #signin:hover{
@@ -46,3 +48,7 @@ getfont{
     text-align: center;
     
 } 
+.active-link{
+    color: black!important;
+    opacity: 1!important;
+}

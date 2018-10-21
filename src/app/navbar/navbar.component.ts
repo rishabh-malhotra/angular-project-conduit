@@ -15,7 +15,4 @@ export class NavbarComponent implements OnInit {
     this.userimage=localStorage.getItem('userimage');
     this.username=localStorage.getItem('username');
   }
-  callProfile(){
-    this.route.navigate(["My-Profile",localStorage.getItem('username')]);
-  }
 }
