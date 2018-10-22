@@ -9,16 +9,23 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-
+  public error:Object;
   
   constructor(private getSignupData:SignupService,private route:Router,private router:ActivatedRoute){}
 
   ngOnInit() {
   }
   registerUser(form:NgForm){
-    this.getSignupData.regUser(form.value).subscribe((status:Object)=>{this.storeData(status)});
+    this.getSignupData.regUser(form.value).subscribe((status:Object)=>{this.storeData(status)}),
+    (err: Error )=> {
+      console.error(err);
+      this.saveerror(err)
     
-  }
+  }};
+  saveerror(data){
+    this.error=data.error.errors;
+    console.log(this.error);
+   }
   storeData(data){
     localStorage.setItem('Token',data.user.token);
     localStorage.setItem('username',data.user.username);

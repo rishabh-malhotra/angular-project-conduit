@@ -18,15 +18,22 @@
     <a id="signin" class="form-control-lg" (click)="callSignin()">Have an account?</a>
     <form #signupForm="ngForm"  (ngSubmit) = "registerUser(signupForm)">
       <fieldset class="form-group">
-        <input class="form-control form-control-lg"type="text" placeholder="Username" name="username" ngModel>
+        <input class="form-control form-control-lg" type="text" placeholder="Username" name="username" ngModel>
       </fieldset>  
       <fieldset class="form-group">
-        <input class="form-control form-control-lg"type="text" placeholder="Email"type="email" name="email"ngModel>
+        <input class="form-control form-control-lg"  placeholder="Email" type="email" name="email" ngModel>
       </fieldset>
       <fieldset class="form-group">
-        <input class="form-control form-control-lg"type="text" placeholder="Password" type="password" name="password" ngModel>
+        <input class="form-control form-control-lg"  placeholder="Password" type="password" name="password" ngModel>
       </fieldset>
       <button class="btn btn-lg btn-success float-right " type="submit">Sign up</button>
     </form>
   </div>
-</div>
+  <br><br>
+   </div>
+  <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6" >
+      <p *ngIf="error" style="color:red;">Invalid username or email already taken</p>
+      </div>
+      </div>

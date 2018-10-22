@@ -26,4 +26,11 @@
       <button type="submit" class="btn btn-lg btn-success float-right ">Sign in</button>
     </div>
   </form>
+  <br><br>
+  <div class="row">
+  <div class="col-md-6"></div>
+  <div class="col-md-6">
+  <p *ngIf="error" style="color:red">Invalid name or password</p>
+  </div>
+</div>
 </div>

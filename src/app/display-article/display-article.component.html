@@ -26,8 +26,8 @@
         <img *ngIf="selected.article.author.image" [src]="selected.article.author.image" height="25px" width="25px" />
         <img *ngIf="!selected.article.author.image" ng-src="selected.article.author.image" height="25px" width="25px" />
         <div class="info">
-          <a class="author" (click)="callProfile(selected.article.author.username)">{{selected.article.author.username}}</a>
-          <span class="date">{{selected.article.createdAt}}</span>
+          <a style="cursor: pointer;" class="author" (click)="callProfile(selected.article.author.username)">{{selected.article.author.username}}</a>
+          <span class="date">{{selected.article.createdAt | date}}</span>
         </div>
       </div>
     </div>
@@ -40,7 +40,7 @@
     <div *ngIf="!match && token">
       <button *ngIf="!following" class="btn btn-outline btn-sm " (click)="followUser()"><i class="fa fa-plus"></i>
         Follow {{selected.article.author.username}} </button>
-      <button *ngIf="following" class="btn  btn-sm " (click)="UnfollowUser()"><i class="far fa-star"></i>
+      <button *ngIf="following" class="btn  btn-sm " (click)="UnfollowUser()"><i class="fa fa-minus"></i>
         UnFollow {{selected.article.author.username}} </button>
       &nbsp;&nbsp;
       <button *ngIf="!selected.article.favorited" class="btn bt btn-sm btn-outline-success " (click)="favoriteArticle()"><i
@@ -74,7 +74,7 @@
         <img *ngIf="!selected.article.author.image" ng-src="selected.article.author.image" height="25px" width="25px" />
         <div class="info">
           <a class="author" (click)="callProfile(selected.article.author.username)" style="color:#5cb85c">{{selected.article.author.username}}</a>
-          <span class="date">{{selected.article.createdAt}}</span>
+          <span class="date">{{selected.article.createdAt | date}}</span>
           <br>
         </div>
         <div *ngIf="match">
@@ -86,7 +86,7 @@
         <div *ngIf="!match && token">
           <button *ngIf="!following" class="btn btn-outline btn-sm " (click)="followUser()"><i class="fa fa-plus"></i>
             Follow {{selected.article.author.username}} </button>
-          <button *ngIf="following" class="btn  btn-sm " (click)="UnfollowUser()"><i class="fa fa-plus"></i>
+          <button *ngIf="following" class="btn  btn-sm " (click)="UnfollowUser()"><i class="fa fa-minus"></i>
             UnFollow {{selected.article.author.username}} </button>
           &nbsp;&nbsp;
           <button *ngIf="!selected.article.favorited" class="btn bt btn-sm btn-outline-success" (click)="favoriteArticle()"><i
@@ -135,9 +135,7 @@
 
 
     <div *ngIf="comments">
-
-
-      <li *ngFor="let comment of comments.comments">
+      <li *ngFor="let comment of comments">
         <div class="row">
           <div class="col-md-3"></div>
           <div class="col-md-6">
@@ -149,7 +147,7 @@
                 <img *ngIf="comment.author.image" class=" float-left" [src]="comment.author.image" height="25px" width="25px" />
                 <img *ngIf="!comment.author.image" class=" float-left" ng-src="comment.author.image" height="25px" width="25px" />
                 <a (click)="callProfile(comment.author.username)"><span>{{comment.author.username}}</span></a>
-                <span>{{comment.createdAt}}</span>
+                <span>{{comment.createdAt | date}}</span>
                 <a class="float-right" style="cursor:pointer" (click)="deleteComment(comment.id)"><i class="fas fa-trash-alt"></i></a>
               </div>
             </div>

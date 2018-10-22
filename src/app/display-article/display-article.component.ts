@@ -14,7 +14,7 @@ export class DisplayArticleComponent implements OnInit {
   public username: string;
   public token: string;
   public match: boolean;
-  comments: Array<Object>;
+  public comments;
   following:boolean;
   constructor(private router: ActivatedRoute, private getData: DisplayServiceService,
     private route: Router) { }
@@ -30,8 +30,8 @@ export class DisplayArticleComponent implements OnInit {
 
     })
     //It get all the comments of that particular article
-    this.getData.getAllComments(this.slug).subscribe((status: Array<Object>) => {
-      this.saveComments(status);
+    this.getData.getAllComments(this.slug).subscribe((status: any) => {
+      this.comments=status.comments;
     });
   }
   callSignin() {
@@ -52,31 +52,28 @@ export class DisplayArticleComponent implements OnInit {
     this.following=data.article.author.following;
     if (this.token) {
       if (this.username === data.article.author.username) {
-
         this.match = true;
       }
     }
-    console.log(this.match);
   }
-  saveComments(data) {
-    this.comments = data;
-  }
+  // saveComments(data) {
+  //   this.comments = data;
+  // }
   addComment(comment: NgForm) {
-    this.getData.postComment(comment.value, this.slug).subscribe((status: Object) => { this.route.navigate([`New-Article/articles/${this.slug}`]); });
-    this.getData.getAllComments(this.slug).subscribe((status: Array<Object>) => {
-      this.saveComments(status);
-      window.location.reload();
+    this.getData.postComment(comment.value, this.slug).subscribe((status: any) => { 
+      this.comments.push(status.comment); 
     });
+  }
 
+  pushComment(data){
+    console.log(typeof(this.comments));
+    this.comments.push(data.comment);
   }
 
   deleteComment(id) {
-    this.getData.removeComment(id, this.slug).subscribe((status: Object) => { });
-    this.getData.getAllComments(this.slug).subscribe((status: Array<Object>) => {
-      this.saveComments(status);
-      window.location.reload();
-      this.route.navigate([`New-Article/articles/${this.slug}`]);
-    });
+    this.getData.removeComment(id, this.slug).subscribe((status: any) => {
+      this.comments.splice(this.comments.indexOf(status.comment),1)
+     });
   }
   deleteArticle() {
     this.getData.removeArticle(this.slug).subscribe((status: Object) => {
@@ -94,7 +91,7 @@ export class DisplayArticleComponent implements OnInit {
       })
   }
   favoriteArticle() {
-    this.getData.favorite(this.slug).subscribe((status) => { console.log(status);
+    this.getData.favorite(this.slug).subscribe((status: any) => { console.log(status);
       this.saveData(status); })
   }
   UnfollowUser() {

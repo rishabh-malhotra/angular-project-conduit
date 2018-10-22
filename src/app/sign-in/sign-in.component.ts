@@ -10,11 +10,24 @@ import { Router,ActivatedRoute } from '@angular/router'
 })
 export class SignInComponent implements OnInit {
   public selected: Object;
+  public error: Object;
   constructor(private getData: LoginService,private route:Router,private router:ActivatedRoute) { }
   loginUser(form: NgForm){
     this.getData.authUser(form.value).subscribe((status: Object )=> {
     this.displayData(status);
-    });
+  },
+  (err: Error )=> {
+    console.error(err);
+    this.saveerror(err)
+  
+    }
+    );
+
+  }
+  saveerror(data){
+    this.error=data.error.errors;
+    console.log(this.error);
+
     }
     displayData(data){
       this.selected = data;
